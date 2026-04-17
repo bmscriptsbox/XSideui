@@ -1,0 +1,12 @@
+QRadioButton#xradio {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+QRadioButton#xradio::indicator {
+    width: 0;
+    height: 0;
+    border: none;
+}

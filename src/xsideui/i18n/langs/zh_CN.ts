@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_CN">
+<context>
+    <name>XSideUI</name>
+    <message>
+        <source>Submit</source>
+        <translation>发送</translation> </message>
+    <message>
+        <source>Cancel</source>
+        <translation>取消</translation>
+    </message>
+    <message>
+        <source>Ok</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Help</source>
+        <translation>帮助</translation>
+    </message>
+     <message>
+        <source>Collapse Panel</source>
+        <translation>折叠面板</translation>
+    </message>
+    <message>
+        <source>Primary</source>
+        <translation>主题</translation>
+    </message>
+    <message>
+        <source>Success</source>
+        <translation>成功</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation>警告</translation>
+    </message>
+    <message>
+        <source>Danger</source>
+        <translation>危险</translation>
+    </message>
+    <message>
+        <source>Secondary</source>
+        <translation>次要</translation>
+    </message>
+    <message>
+        <source>Tertiary</source>
+        <translation>第三</translation>
+    </message>
+    <message>
+        <source>Large</source>
+        <translation>大</translation>
+    </message>
+    <message>
+        <source>Default</source>
+        <translation>默认</translation>
+    </message>
+    <message>
+        <source>Small</source>
+        <translation>小</translation>
+    </message>
+    <message>
+        <source>Mini</source>
+        <translation>迷你</translation>
+    </message>
+    <message>
+        <source>More</source>
+        <translation>更多</translation>
+    </message>
+    <message>
+        <source>New</source>
+        <translation>新建</translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
+    <message>
+        <source>Save</source>
+        <translation>保存</translation>
+    </message>
+        <message>
+        <source>Export</source>
+        <translation>导出</translation>
+    </message>
+        <message>
+        <source>Download</source>
+        <translation>下载</translation>
+    </message>
+        <message>
+        <source>Delete</source>
+        <translation>删除</translation>
+    </message>
+        <message>
+        <source>Share</source>
+        <translation>分享</translation>
+    </message>
+    <message>
+        <source>Jump</source>
+        <translation>跳至</translation>
+    </message>
+    <message>
+        <source>Page</source>
+        <translation>页码</translation>
+    </message>
+    <message>
+        <source>Job</source>
+        <translation>职位</translation>
+    </message>
+    <message>
+        <source>Age</source>
+        <translation>年龄</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名字</translation>
+    </message>
+    <message>
+        <source>Empty Data</source>
+        <translation>空数据</translation>
+    </message>
+
+
+
+</context>
+</TS>

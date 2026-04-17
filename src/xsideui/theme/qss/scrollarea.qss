@@ -1,0 +1,69 @@
+/* 滚动区域组件 */
+QScrollArea#xscrollarea {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+QScrollArea#xscrollarea > QWidget > QWidget {
+    background-color: transparent;
+}
+
+/* 垂直滚动条 */
+QScrollArea#xscrollarea QScrollBar:vertical {
+    background-color: transparent;
+    width: 6px;
+    margin: 0px;
+}
+
+QScrollArea#xscrollarea QScrollBar::handle:vertical {
+    background-color: {fill_alpha_4};
+    max-height: 100px;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0px;
+}
+
+QScrollArea#xscrollarea QScrollBar::handle:vertical:hover {
+    background-color: {fill};
+}
+
+QScrollArea#xscrollarea QScrollBar::add-line:vertical,
+QScrollArea#xscrollarea QScrollBar::sub-line:vertical {
+    background: none;
+    height: 0px;
+}
+
+QScrollArea#xscrollarea QScrollBar::add-page:vertical,
+QScrollArea#xscrollarea QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* 水平滚动条 */
+QScrollArea#xscrollarea QScrollBar:horizontal {
+    background-color: transparent;
+    height: 6px;
+    margin: 0px;
+}
+
+QScrollArea#xscrollarea QScrollBar::handle:horizontal {
+    background-color: {fill_alpha_6};
+    min-width: 40px;
+    border-radius: 3px;
+    margin: 0px;
+}
+
+QScrollArea#xscrollarea QScrollBar::handle:horizontal:hover {
+    background-color: {fill_alpha_8};
+}
+
+QScrollArea#xscrollarea QScrollBar::add-line:horizontal,
+QScrollArea#xscrollarea QScrollBar::sub-line:horizontal {
+    background: none;
+    width: 0px;
+}
+
+QScrollArea#xscrollarea QScrollBar::add-page:horizontal,
+QScrollArea#xscrollarea QScrollBar::sub-page:horizontal {
+    background: none;
+}

@@ -1,0 +1,82 @@
+/* 时间编辑框组件 */
+QTimeEdit#xqtimeedit {
+    background-color: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    padding: {spacing_s} {spacing_m};
+    padding-right: 32px;
+    selection-background-color: transparent;
+    selection-color: {text_1};
+}
+
+QTimeEdit#xqtimeedit[componentSize="large"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_l};
+    border-radius: {radius_l};
+    min-height:{height_large}
+}
+
+QTimeEdit#xqtimeedit[componentSize="default"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_m};
+    border-radius: {radius_m};
+    min-height:{height_default}
+}
+
+QTimeEdit#xqtimeedit[componentSize="small"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_s};
+    border-radius: {radius_s};
+    min-height:{height_small}
+}
+
+QTimeEdit#xqtimeedit[componentSize="mini"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_xs};
+    border-radius: {radius_s};
+    min-height:{height_mini}
+}
+
+QTimeEdit#xqtimeedit:hover {
+    border-color: {text_2};
+}
+
+QTimeEdit#xqtimeedit:focus {
+    border-color: {primary};
+}
+
+QTimeEdit#xqtimeedit:disabled {
+    background-color: {bg_2};
+    border-color: {border};
+    color: {text_disabled};
+}
+
+/* 隐藏默认按钮 */
+QTimeEdit#xqtimeedit::up-button,
+QTimeEdit#xqtimeedit::down-button {
+    width: 0px;
+    height: 0px;
+    border: none;
+    background: none;
+}
+
+/* 自定义箭头按钮 */
+QPushButton {
+    border: none;
+    background-color: transparent;
+}
+
+QPushButton:hover {
+    background-color: {fill_alpha_2};
+}
+
+QPushButton:pressed {
+    background-color: {fill_alpha_3};
+}
+
+QPushButton:disabled {
+    background-color: transparent;
+}

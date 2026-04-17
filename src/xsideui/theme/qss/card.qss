@@ -1,0 +1,47 @@
+QWidget#xcard-base {
+    background: transparent;
+    border: none;
+}
+
+QWidget#xcard-container {
+    background: {bg_1};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+}
+
+QWidget#xcard-container:hover {
+    border-color: {transparent};
+}
+
+
+
+QWidget#xcard-shadow {
+    background: {bg_1};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+}
+
+QWidget#xcard-shadow:hover {
+    border-color: {text_3};
+}
+
+QWidget#xcard-header {
+    background: {fill_alpha_1};
+    border: none;
+}
+
+QWidget#xcard-header-shadow {
+    background: transparent;
+    border: none;
+}
+
+QWidget#xcard-group {
+    background: transparent;
+    border: none;
+}
+
+QWidget#xcard-group-shadow {
+    background: transparent;
+    border: none;
+}
+

@@ -1,0 +1,61 @@
+QListWidget#XListWidget {
+    background-color: {bg_1};
+    border: none;
+    border-radius: {radius_m};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    outline: none;
+    padding: 0px;
+}
+
+QListWidget#XListWidget[hasBorder="true"] {
+    border: 1px solid {border};
+}
+
+QListWidget#XListWidget::item {
+    color: {text_1};
+    text-align: left;
+    padding: {spacing_m} {spacing_xs};
+    border-bottom: 1px solid {border};
+}
+
+QListWidget#XListWidget::item:last {
+    border-bottom: none;
+}
+
+QListWidget#XListWidget::item:hover {
+    background-color: {fill_alpha_1};
+}
+
+QListWidget#XListWidget::item:selected {
+    background-color: {primary_alpha_1};
+
+}
+
+
+QScrollBar:vertical {
+    background: transparent;
+    width: 6px;      /* 保持极细风格 */
+    margin: 0px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background-color: {primary_alpha_2};
+    border-radius: 3px;
+    min-height: 30px;
+
+}
+QScrollBar::handle:vertical:hover {
+    /* 悬停时加深同一色系的透明度 */
+    background-color: {primary_alpha_3};
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+    border: none;
+    height: 0px;
+}

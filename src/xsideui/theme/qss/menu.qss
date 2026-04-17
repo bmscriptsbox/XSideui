@@ -1,0 +1,38 @@
+QMenu#xmenu {
+    background-color: {bg_1};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    padding: {spacing_xs};
+    font-family: {font_family};
+    font-size: {font_size_m};
+}
+
+QMenu#xmenu::item {
+    height: {height_default};
+    padding: 0px {spacing_l};
+    background: transparent;
+    border-radius: {radius_s};
+    color: {text_1};
+}
+
+QMenu#xmenu::item:selected {
+    background-color: {primary_alpha_1};
+
+}
+
+QMenu#xmenu::item:disabled {
+    background-color: transparent;
+    color: {text_disabled};
+}
+
+QMenu#xmenu::separator {
+    height: 1px;
+    background-color: {border};
+    margin: {spacing_xs} {spacing_s};
+}
+
+QMenu#xmenu::icon {
+    left: 12px;
+    width: 16px;
+    height: 16px;
+}

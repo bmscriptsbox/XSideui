@@ -1,0 +1,79 @@
+QTextEdit#xtextedit {
+    background-color: {bg_2};
+    color: {text_1};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    padding: {spacing_s};
+    font-family: {font_family};
+    font-size: {font_size_m};
+}
+
+QTextEdit#xtextedit:hover {
+    border-color: {text_2};
+}
+
+QTextEdit#xtextedit:focus {
+    border-color: {primary};
+}
+
+QTextEdit#xtextedit:disabled {
+    background-color: {primary_fill_3};
+    color: {text_3};
+    border-color: {border};
+}
+
+QTextEdit#xtextedit QScrollBar:vertical {
+    background: transparent;
+    width: 6px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+QTextEdit#xtextedit QScrollBar::handle:vertical {
+    background: {text_1_alpha_1};
+    min-height: 30px;
+    border-radius: 3px;
+}
+
+QTextEdit#xtextedit QScrollBar::handle:vertical:hover {
+    background: {text_1_alpha_2};
+}
+
+QTextEdit#xtextedit QScrollBar::add-line:vertical,
+QTextEdit#xtextedit QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QTextEdit#xtextedit QScrollBar::add-page:vertical,
+QTextEdit#xtextedit QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QTextEdit#xtextedit QScrollBar:horizontal {
+    background: transparent;
+    height: 6px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+QTextEdit#xtextedit QScrollBar::handle:horizontal {
+    background: {text_1_alpha_1};
+    min-width: 30px;
+    border-radius: 3px;
+}
+
+QTextEdit#xtextedit QScrollBar::handle:horizontal:hover {
+    background: {text_1_alpha_2};
+}
+
+QTextEdit#xtextedit QScrollBar::add-line:horizontal,
+QTextEdit#xtextedit QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+QTextEdit#xtextedit QScrollBar::add-page:horizontal,
+QTextEdit#xtextedit QScrollBar::sub-page:horizontal {
+    background: none;
+}

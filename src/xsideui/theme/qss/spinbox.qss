@@ -1,0 +1,92 @@
+/* 数字输入框组件 */
+QSpinBox#xspinbox,
+QDoubleSpinBox#xspinbox {
+    background-color: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_s};
+    padding: {spacing_s} {spacing_m};
+    padding-right: 32px;
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    selection-background-color: transparent;
+    selection-color: {text_1};
+}
+
+QSpinBox#xspinbox[componentSize="large"],
+QDoubleSpinBox#xspinbox[componentSize="large"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_l};
+    border-radius: {radius_l};
+    min-height:{height_large}
+}
+
+QSpinBox#xspinbox[componentSize="default"],
+QDoubleSpinBox#xspinbox[componentSize="default"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_m};
+    border-radius: {radius_m};
+    min-height:{height_default}
+}
+
+QSpinBox#xspinbox[componentSize="small"],
+QDoubleSpinBox#xspinbox[componentSize="small"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_s};
+    border-radius: {radius_s};
+    min-height:{height_small}
+}
+
+QSpinBox#xspinbox[componentSize="mini"],
+QDoubleSpinBox#xspinbox[componentSize="mini"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_xs};
+    border-radius: {radius_s};
+    min-height:{height_mini}
+}
+
+QSpinBox#xspinbox:hover,
+QDoubleSpinBox#xspinbox:hover {
+    border-color: {text_2};
+}
+
+QSpinBox#xspinbox:focus,
+QDoubleSpinBox#xspinbox:focus {
+    border-color: {primary};
+}
+
+QSpinBox#xspinbox:disabled,
+QDoubleSpinBox#xspinbox:disabled {
+    background-color: {bg_2};
+    color: {text_disabled};
+    border-color: {border};
+}
+
+/* 隐藏默认按钮 */
+QSpinBox#xspinbox::up-button,
+QDoubleSpinBox#xspinbox::up-button,
+QSpinBox#xspinbox::down-button,
+QDoubleSpinBox#xspinbox::down-button {
+    width: 0px;
+    height: 0px;
+    border: none;
+    background: none;
+}
+
+/* 自定义箭头按钮 */
+QPushButton {
+    border: none;
+    background-color: transparent;
+}
+
+QPushButton:hover {
+    background-color: {fill_alpha_2};
+}
+
+QPushButton:pressed {
+    background-color: {fill_alpha_3};
+}
+
+QPushButton:disabled {
+    background-color: transparent;
+}

@@ -1,0 +1,23 @@
+QGroupBox#xgroupbox {
+    font-family: {font_family};
+    font-size: {font_size_m};
+    color: {text_1};
+    background-color: transparent;
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    margin-top: 0.5em;
+    padding: 11px 11px;
+}
+
+QGroupBox#xgroupbox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top conter;
+    padding: 0 3px;
+    color: {text_0};
+}
+
+QGroupBox#xgroupbox:disabled {
+    color: {text_3};
+    border-color: {border};
+    background-color: {bg_2};
+}

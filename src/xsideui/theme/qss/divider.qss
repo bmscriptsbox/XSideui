@@ -1,0 +1,34 @@
+/* 基础样式 */
+QFrame#XDivider {
+    border: none;
+    background-color: {border}; /* 默认使用边框色 */
+}
+
+/* 扩展样式：通过 color 属性切换 */
+QFrame#XDivider[color="primary"] {
+    background-color: {primary};
+}
+
+QFrame#XDivider[color="success"] {
+    background-color: {success};
+}
+
+QFrame#XDivider[color="danger"] {
+    background-color: {danger};
+}
+
+QFrame#XDivider[color="warning"] {
+    background-color: {warning};
+}
+QFrame#XDivider[color="secondary"] {
+    background-color: {secondary};
+}
+QFrame#XDivider[color="tertiary"] {
+    background-color: {tertiary};
+}
+
+
+/* 确保容器背景透明 */
+QWidget#XTextDivider {
+    background: transparent;
+}

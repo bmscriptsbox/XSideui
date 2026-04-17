@@ -1,0 +1,28 @@
+QProgressBar#xprogressbar {
+    background: transparent;
+    border: none;
+    text-align: center;
+}
+
+QProgressBar#xprogressbar::chunk {
+    background: transparent;
+    border: none;
+}
+
+QProgressBar#xprogressbar[enabled="false"] {
+    opacity: {opacity_disabled};
+}
+
+QProgressBar#xcircleprogress {
+    background: transparent;
+    border: none;
+}
+
+QProgressBar#xcircleprogress::chunk {
+    background: transparent;
+    border: none;
+}
+
+QProgressBar#xcircleprogress[enabled="false"] {
+    opacity: {opacity_disabled};
+}

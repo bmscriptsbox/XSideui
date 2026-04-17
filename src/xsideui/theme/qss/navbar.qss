@@ -1,0 +1,30 @@
+/* 导航容器 */
+QFrame#container {
+    background: {fill_alpha_3};
+}
+
+/* 导航项 */
+QWidget#navitem {
+    background-color: transparent;
+    border-radius: 8px; /* 这里的圆角会影响悬停时的背景 */
+}
+
+/* 悬停状态 */
+QWidget#navitem:hover {
+    background-color: {fill_alpha_3};
+}
+
+/* 选中状态不设置 QSS 背景，我们用 paintEvent 绘制更灵活的样式 */
+QWidget#navitem[selected="true"] {
+    background-color: {primary_alpha_1};
+}
+
+/* 气泡提示样式 */
+QToolTip {
+    background-color: #333333;
+    color: #FFFFFF;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}

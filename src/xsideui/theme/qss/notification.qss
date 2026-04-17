@@ -1,0 +1,33 @@
+QWidget#xnotification {
+    background: transparent;
+}
+
+QWidget#notification-container {
+    background: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+}
+
+QLabel#notification-icon {
+    background: transparent;
+}
+
+
+
+QPushButton#notification-close {
+    background: transparent;
+    border: none;
+    padding: 0px;
+}
+
+QPushButton#notification-close:hover {
+    background: {bg_2};
+    border-radius: {radius_s};
+}
+
+QPushButton#notification-close:pressed {
+    background: {bg_3};
+    border-radius: {radius_s};
+}
+
+

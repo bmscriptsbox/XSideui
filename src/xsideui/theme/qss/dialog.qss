@@ -1,0 +1,13 @@
+/* 对话框组件 */
+QWidget#xdialog {
+    background-color: transparent;
+    border: none;
+}
+
+QFrame#shadow-frame {
+    background-color: {bg_0};
+    border-radius: {radius_l};
+    border: 1px solid {border};
+}
+
+

@@ -1,0 +1,23 @@
+/* 标题栏组件 */
+QFrame#xtitlebar {
+    background-color: {fill_alpha_3};
+    border-top-left-radius: {radius_m};
+    border-top-right-radius: {radius_m};
+    border: none;
+}
+
+/* 标题栏图标 */
+QLabel#xtitlebarlogo {
+    background-color: transparent;
+    border: none;
+}
+
+/* 标题栏标题 */
+QLabel#xtitlebartitle {
+    background-color: transparent;
+    border: none;
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    font-weight: {font_weight_regular};
+}

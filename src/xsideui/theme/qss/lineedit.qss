@@ -1,0 +1,103 @@
+QLineEdit#xlineedit {
+    background-color: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    color: {text_1};
+    font-family: {font_family};
+    selection-background-color: {primary_alpha_3};
+}
+
+
+
+QLineEdit#xlineedit[input-size="large"] {
+    padding: 0px {spacing_xl};
+    font-size: {font_size_l};
+    border-radius: {radius_l};
+    min-height:{height_large}
+}
+
+QLineEdit#xlineedit[input-size="default"] {
+    padding: 0px {spacing_l};
+    font-size: {font_size_m};
+    border-radius: {radius_m};
+    min-height:{height_default}
+}
+
+
+QLineEdit#xlineedit[input-size="small"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_s};
+    border-radius: {radius_s};
+    min-height:{height_small}
+}
+
+QLineEdit#xlineedit[input-size="mini"] {
+    padding: 0px {spacing_xs};
+    font-size: {font_size_xs};
+    border-radius: {radius_s};
+    min-height:{height_mini}
+}
+
+QLineEdit#xlineedit:hover {
+    border-color: {text_2};
+}
+
+QLineEdit#xlineedit:focus {
+    border-color: {primary};
+}
+
+QLineEdit#xlineedit:disabled {
+    background-color: {bg_2};
+    color: {text_disabled};
+    border-color: {border};
+}
+
+QLineEdit#xlineedit[readOnly="true"] {
+    background-color: {bg_2};
+    color: {text_3};
+    border-color: {text_disabled};
+}
+
+QLineEdit#xlineedit[color="error"] {
+    border-color: {danger};
+}
+
+QLineEdit#xlineedit[color="error"]:focus {
+    border-color: {danger};
+}
+
+QLineEdit#xlineedit[color="error"]:hover {
+    border-color: {danger};
+}
+
+QLineEdit#xlineedit[color="success"] {
+    border-color: {success};
+}
+
+QLineEdit#xlineedit[color="success"]:focus {
+    border-color: {success};
+}
+
+QLineEdit#xlineedit[color="success"]:hover {
+    border-color: {success};
+}
+
+QLineEdit#xlineedit[no-border="true"] {
+    border: none;
+}
+
+QLineEdit#xlineedit QToolButton {
+    background: transparent;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+QLineEdit#xlineedit QToolButton:hover {
+    background: {text_1_alpha_1};
+    border-radius: {radius_s};
+}
+
+QLineEdit#xlineedit QToolButton:pressed {
+    background: {text_1_alpha_2};
+}

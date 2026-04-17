@@ -1,0 +1,8 @@
+
+
+
+
+QFrame#MainFrame {
+    background-color: {bg_0};
+}
+

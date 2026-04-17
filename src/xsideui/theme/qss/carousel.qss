@@ -1,0 +1,32 @@
+/* 轮播图主体 - 添加圆角剪裁感 */
+XCarousel {
+    background-color: transparent;
+}
+
+QStackedWidget {
+    background-color: transparent;
+    border-radius: {radius_m}; /* 给图片容器加个大圆角，更现代 */
+}
+
+/* 指示器容器 */
+QWidget#indicator_container {
+    background-color: transparent;
+}
+
+/* 指示器 - 默认状态 (极简灰色条) */
+QLabel#carousel_indicator {
+    background: {fill}; /* 半透明灰 */
+    border-radius: 2px;
+    margin: 0px;
+}
+
+/* 指示器 - 激活状态 (主题色长条) */
+QLabel#carousel_indicator[active="true"] {
+    background: {primary}; /* 你的主题色 */
+}
+
+/* 指示器 - 悬停状态 (变亮反馈) */
+QLabel#carousel_indicator:hover {
+    background: {primary_alpha_5};
+}
+

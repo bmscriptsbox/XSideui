@@ -1,0 +1,13 @@
+/* Checkbox QSS 样式文件 */
+
+/* 隐藏默认复选框样式 */
+QCheckBox#xcheckbox {
+    spacing: 0;
+}
+
+QCheckBox#xcheckbox::indicator {
+    width: 0;
+    height: 0;
+    border: none;
+    background: transparent;
+}

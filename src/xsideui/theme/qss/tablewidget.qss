@@ -1,0 +1,130 @@
+/* XTableWidget 表格组件基础样式 */
+QTableWidget {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_m};
+}
+
+/* 表头样式 */
+QHeaderView {
+    background: transparent;
+    border-bottom: 1px solid {border};
+}
+
+/* 表头单元格样式 */
+QHeaderView::section {
+    background: transparent;
+    padding: {spacing_m};
+    border: none;
+    color: {text_1};
+    font-weight: normal;
+    font-family: {font_family};
+    font-size: {font_size_m};
+}
+
+/* 表头单元格选中样式 */
+QHeaderView::section:selected {
+    background: transparent;
+}
+
+/* 表格单元格样式 */
+QTableWidget::item {
+    padding: {spacing_m};
+    color: {text_1};
+    border:none;
+
+}
+
+
+
+
+/* 表格单元格选中样式 */
+QTableWidget::item:selected {
+    background: {primary_alpha_1};
+    color: {text_1};
+}
+
+/* 默认样式 */
+QTableWidget#xtablewidget-default::item {
+    border-bottom: 1px solid {border};
+}
+
+/* 斑马纹样式 */
+QTableWidget#xtablewidget-striped {
+    alternate-background-color: {fill_alpha_3};
+}
+
+QTableWidget#xtablewidget-striped::item {
+    border: none;
+}
+
+
+
+
+
+
+/* 滚动条样式 */
+QScrollBar:vertical {
+    background: transparent;
+    width: 6px;
+    margin: 0px;
+    padding: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: {text_1_alpha_2};
+    min-height: 30px;
+    border-radius: {radius_5};
+}
+
+QScrollBar::handle:vertical:hover {
+    background: {text_1_alpha_3};
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    background: transparent;
+    height: 6px;
+    margin: 0px;
+    padding: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: {text_1_alpha_2};
+    min-width: 30px;
+    border-radius: {radius_s};
+}
+
+QScrollBar::handle:horizontal:hover {
+    background: {text_1_alpha_3};
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+}
+
+/* 空状态样式 */
+QWidget#table-empty-widget {
+    background: transparent;
+}
+
+
+

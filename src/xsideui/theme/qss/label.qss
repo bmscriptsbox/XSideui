@@ -1,0 +1,51 @@
+QLabel {
+    font-family: {font_family};
+}
+
+QLabel#label-h1 {
+    font-size: {font_size_xxl};
+    font-weight: {font_weight_heavy};
+    color: {text_0};
+}
+
+QLabel#label-h2 {
+    font-size: {font_size_xl};
+    font-weight: {font_weight_semibold};
+    color: {text_0};
+}
+
+QLabel#label-h3 {
+    font-size: {font_size_l};
+    font-weight: {font_weight_medium};
+    color: {text_0};
+}
+
+QLabel#label-h4 {
+    font-size: {font_size_m};
+    font-weight: {font_weight_regular};
+    color: {text_0};
+}
+
+QLabel#label-body {
+    font-size: {font_size_m};
+    font-weight: {font_weight_regular};
+    color: {text_1};
+}
+
+QLabel#label-caption {
+    font-size: {font_size_s};
+    font-weight: {font_weight_regular};
+    color: {text_1};
+}
+
+QLabel#label-secondary {
+    font-size: {font_size_xs};
+    font-weight: {font_weight_light};
+    color: {text_2};
+}
+
+QLabel#label-disabled {
+    font-size: {font_size_xs};
+    font-weight: {font_weight_light};
+    color: {text_3};
+}

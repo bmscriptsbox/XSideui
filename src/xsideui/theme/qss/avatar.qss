@@ -1,0 +1,14 @@
+/* XAvatar Component Stylesheet 头像组件样式表 */
+
+/* Avatar container 头像容器 */
+QLabel#xavatar {
+    background: transparent;
+    border: none;
+    border-radius: {radius_s};
+    min-width: 40px;
+    min-height: 40px;
+    color: {bg_0};
+    font-family: {font_family};
+    font-size: {font_size_l};
+    font-weight: {font_weight_medium};
+}

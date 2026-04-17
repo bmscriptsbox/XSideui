@@ -1,0 +1,730 @@
+/* Push Button QSS 样式文件 */
+
+QPushButton#xpushbutton {
+    background-color: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    color: {text_1};
+    font-family: {font_family};
+}
+
+QPushButton#xpushbutton:focus {
+       outline: none;
+}
+
+
+QPushButton#xpushbutton[button-size="large"] {
+    padding: 0px {spacing_xl};
+    font-size: {font_size_l};
+    border-radius: {radius_l};
+    min-height:{height_large}
+
+}
+
+QPushButton#xpushbutton[button-size="default"] {
+    padding: 0px {spacing_l};
+    font-size: {font_size_m};
+    border-radius: {radius_m};
+    min-height:{height_default}
+
+}
+
+
+QPushButton#xpushbutton[button-size="small"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_s};
+    border-radius: {radius_s};
+    min-height:{height_small}
+}
+
+QPushButton#xpushbutton[button-size="mini"] {
+    padding: 0px {spacing_xs};
+    font-size: {font_size_xs};
+    border-radius: {radius_s};
+    min-height:{height_mini}
+}
+
+
+/* --- XSplitDropDownButton 拼接样式 --- */
+
+/* 左侧主按钮 */
+QPushButton#xpushbutton[position="first"] {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    margin-right: -1px; /* 关键：让右侧按钮覆盖过来，而不是删边框 */
+}
+
+/* 右侧下拉按钮 */
+QPushButton#xpushbutton[position="last"] {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/* 确保在 outlined 模式下，重叠的边框颜色依然是 primary */
+QPushButton#xpushbutton[variant="outlined"][position="middle"],
+QPushButton#xpushbutton[variant="outlined"][position="last"] {
+    border-left: 1px solid {primary};
+}
+
+
+
+/* 1. 基础合并：让后面按钮左移 1px 覆盖前一个按钮的右边框 */
+QPushButton#xpushbutton[group-vertical="false"][position="middle"],
+QPushButton#xpushbutton[group-vertical="false"][position="last"] {
+    margin-left: -1px;
+    border-left: 1px solid {border}; /* 先恢复默认边框颜色 */
+}
+
+
+/* --- 水平按钮组逻辑 --- */
+/* 中间和末尾按钮，左边框设为0或使用负margin防止边框加粗 */
+QPushButton#xpushbutton[position="middle"],
+QPushButton#xpushbutton[position="last"] {
+    border-left: none; /* 或者 margin-left: -1px; */
+}
+
+/* 圆角切削：水平模式 */
+QPushButton#xpushbutton[group-vertical="false"][position="first"] {
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QPushButton#xpushbutton[group-vertical="false"][position="middle"] {
+    border-radius: 0px;
+}
+
+QPushButton#xpushbutton[group-vertical="false"][position="last"] {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+/* --- 垂直按钮组逻辑 --- */
+
+QPushButton#xpushbutton[group-vertical="true"][position="middle"],
+QPushButton#xpushbutton[group-vertical="true"][position="last"] {
+    border-top: none;
+}
+
+QPushButton#xpushbutton[group-vertical="true"][position="first"] {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+QPushButton#xpushbutton[group-vertical="true"][position="middle"] {
+    border-radius: 0px;
+}
+
+QPushButton#xpushbutton[group-vertical="true"][position="last"] {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+
+
+QPushButton#xpushbutton:hover {
+    background-color: {fill_alpha_3};
+    border-color: {primary};
+}
+
+QPushButton#xpushbutton:pressed {
+    background-color: {primary_alpha_3};
+    border-color: {primary};
+}
+
+
+QPushButton#xpushbutton:disabled {
+    background-color: {bg_2};
+    border-color: {border};
+    color: {text_disabled};
+    opacity: {opacity_disabled};
+}
+
+QPushButton#xpushbutton[variant="solid"] {
+    background-color: {primary};
+    border-color: {primary};
+    color: #f1f1f1;
+}
+
+QPushButton#xpushbutton[variant="solid"]:hover {
+    background-color: {primary_alpha_8};
+    border-color: {primary_alpha_8};
+}
+
+QPushButton#xpushbutton[variant="solid"]:pressed {
+    background-color: {primary_alpha_8};
+    border-color: {primary_alpha_8};
+}
+
+QPushButton#xpushbutton[variant="solid"]:disabled {
+    background-color: {primary_alpha_3};
+    border-color: transparent;
+    color: #f5f5f5;
+}
+
+QPushButton#xpushbutton[variant="outlined"] {
+
+    border-color: {primary};
+    color: {primary};
+
+}
+
+QPushButton#xpushbutton[variant="outlined"]:hover {
+    background-color: {primary_alpha_1};
+    border-color: {primary};
+}
+
+QPushButton#xpushbutton[variant="outlined"]:pressed {
+    background-color: {primary_alpha_2};
+    border-color: {primary};
+}
+
+QPushButton#xpushbutton[variant="outlined"]:disabled {
+    background-color: transparent;
+    border-color: {primary_alpha_3};
+    color: {primary_alpha_3};
+
+}
+
+
+
+QPushButton#xpushbutton[variant="filled"] {
+    background-color: {primary_alpha_1};
+    border-color: {primary_alpha_1};
+    color: {primary};
+}
+
+QPushButton#xpushbutton[variant="filled"]:hover {
+    background-color: {primary_alpha_3};
+    border-color: {primary_alpha_3};
+}
+
+QPushButton#xpushbutton[variant="filled"]:pressed {
+    background-color: {primary_alpha_3};
+    border-color: {primary_alpha_3};
+}
+
+QPushButton#xpushbutton[variant="filled"]:disabled {
+    background-color: {primary_alpha_1};
+    border-color: {primary_alpha_3};
+    color: {primary_alpha_3};
+}
+
+
+
+QPushButton#xpushbutton[variant="text"] {
+    background-color: transparent;
+    border: none;
+    color: {primary};
+}
+
+QPushButton#xpushbutton[variant="text"]:hover {
+    background-color: {primary_alpha_1};
+}
+
+QPushButton#xpushbutton[variant="text"]:pressed {
+    background-color: {primary_alpha_2};
+}
+
+QPushButton#xpushbutton[variant="text"]:disabled {
+    color: {primary_alpha_3};
+}
+
+QPushButton#xpushbutton[variant="link"] {
+    background-color: transparent;
+    border: none;
+    color: {primary};
+
+}
+
+QPushButton#xpushbutton[variant="link"]:hover {
+    color: {primary_alpha_5};
+}
+
+QPushButton#xpushbutton[variant="link"]:pressed {
+    color: {primary_alpha_5};
+}
+
+QPushButton#xpushbutton[variant="link"]:disabled {
+    color: {primary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="success"] {
+    border-color: {success};
+}
+
+QPushButton#xpushbutton[color="success"][variant="solid"] {
+    background-color: {success};
+    border-color: {success};
+}
+
+QPushButton#xpushbutton[color="success"][variant="solid"]:hover {
+    background-color: {success_alpha_8};
+    border-color: {success_alpha_8};
+}
+
+QPushButton#xpushbutton[color="success"][variant="solid"]:pressed {
+    background-color: {success_alpha_8};
+    border-color: {success_alpha_8};
+}
+
+QPushButton#xpushbutton[color="success"][variant="solid"]:disabled {
+    background-color: {success_alpha_3};
+    border-color: transparent;
+    color: #f5f5f5;
+}
+
+QPushButton#xpushbutton[color="success"][variant="outlined"] {
+    border-color: {success};
+    color: {success};
+}
+
+QPushButton#xpushbutton[color="success"][variant="outlined"]:hover {
+    background-color: {success_alpha_1};
+}
+
+QPushButton#xpushbutton[color="success"][variant="outlined"]:pressed {
+    background-color: {success_alpha_2};
+}
+
+QPushButton#xpushbutton[color="success"][variant="outlined"]:disabled {
+    background-color: transparent;
+    border-color:{success_alpha_3};
+    color:{success_alpha_3};
+}
+
+QPushButton#xpushbutton[color="success"][variant="filled"] {
+    background-color: {success_alpha_1};
+    border-color: {success_alpha_1};
+    color: {success};
+}
+
+QPushButton#xpushbutton[color="success"][variant="filled"]:hover {
+    background-color: {success_alpha_3};
+}
+
+QPushButton#xpushbutton[color="success"][variant="filled"]:pressed {
+    background-color: {success_alpha_3};
+}
+
+QPushButton#xpushbutton[color="success"][variant="filled"]:disabled {
+    background-color: {success_alpha_1};
+    border-color: {success_alpha_3};
+    color: {success_alpha_3};
+}
+
+QPushButton#xpushbutton[color="success"][variant="text"] {
+    color: {success};
+}
+
+QPushButton#xpushbutton[color="success"][variant="text"]:hover {
+    background-color: {success_alpha_1};
+}
+
+QPushButton#xpushbutton[color="success"][variant="text"]:pressed {
+    background-color: {success_alpha_2};
+}
+
+QPushButton#xpushbutton[color="success"][variant="text"]:disabled {
+    color: {success_alpha_3};
+}
+
+QPushButton#xpushbutton[color="success"][variant="link"] {
+    color: {success};
+}
+
+QPushButton#xpushbutton[color="success"][variant="link"]:hover {
+    color: {success_alpha_5};
+}
+
+QPushButton#xpushbutton[color="success"][variant="link"]:pressed {
+    color: {success_alpha_5};
+}
+
+QPushButton#xpushbutton[color="success"][variant="link"]:disabled {
+    color: {success_alpha_3};
+}
+
+
+
+QPushButton#xpushbutton[color="warning"] {
+    border-color: {warning};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="solid"] {
+    background-color: {warning};
+    border-color: {warning};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="solid"]:hover {
+    background-color: {warning_alpha_8};
+    border-color: {warning_alpha_8};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="solid"]:pressed {
+    background-color: {warning_alpha_8};
+    border-color: {warning_alpha_8};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="solid"]:disabled {
+    background-color: {warning_alpha_3};
+    border-color: transparent;
+    color: #f5f5f5;
+}
+
+QPushButton#xpushbutton[color="warning"][variant="outlined"] {
+    border-color: {warning};
+    color: {warning};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="outlined"]:hover {
+    background-color: {warning_alpha_1};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="outlined"]:pressed {
+    background-color: {warning_alpha_2};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="outlined"]:disabled {
+    background-color: transparent;
+    border-color: {warning_alpha_3};
+    color: {warning_alpha_3};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="filled"] {
+    background-color: {warning_alpha_1};
+    border-color: {warning_alpha_1};
+    color: {warning};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="filled"]:hover {
+    background-color: {warning_alpha_3};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="filled"]:pressed {
+    background-color: {warning_alpha_3};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="filled"]:disabled {
+    background-color: {warning_alpha_1};
+    border-color: {warning_alpha_3};
+    color: {warning_alpha_3};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="text"] {
+    color: {warning};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="text"]:hover {
+    background-color: {warning_alpha_1};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="text"]:pressed {
+    background-color: {warning_alpha_2};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="text"]:disabled {
+    color: {warning_alpha_3};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="link"] {
+    color: {warning};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="link"]:hover {
+    color: {warning_alpha_5};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="link"]:pressed {
+    color: {warning_alpha_5};
+}
+
+QPushButton#xpushbutton[color="warning"][variant="link"]:disabled {
+    color: {warning_alpha_3};
+}
+
+QPushButton#xpushbutton[color="danger"] {
+    border-color: {danger};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="solid"] {
+    background-color: {danger};
+    border-color: {danger};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="solid"]:hover {
+    background-color: {danger_alpha_8};
+    border-color: {danger_alpha_8};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="solid"]:pressed {
+    background-color: {danger_alpha_8};
+    border-color: {danger_alpha_8};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="solid"]:disabled {
+    background-color: {danger_alpha_3};
+    border-color: transparent;
+    color: #f5f5f5;
+}
+
+QPushButton#xpushbutton[color="danger"][variant="outlined"] {
+    border-color: {danger};
+    color: {danger};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="outlined"]:hover {
+    background-color: {danger_alpha_1};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="outlined"]:pressed {
+    background-color: {danger_alpha_2};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="outlined"]:disabled {
+    background-color: transparent;
+    border-color: {danger_alpha_3};
+    color: {danger_alpha_3};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="filled"] {
+    background-color: {danger_alpha_1};
+    border-color: {danger_alpha_1};
+    color: {danger};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="filled"]:hover {
+    background-color: {danger_alpha_3};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="filled"]:pressed {
+    background-color: {danger_alpha_3};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="filled"]:disabled {
+    background-color: {danger_alpha_1};
+    border-color: {danger_alpha_3};
+    color: {danger_alpha_3};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="text"] {
+    color: {danger};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="text"]:hover {
+    background-color: {danger_alpha_1};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="text"]:pressed {
+    background-color: {danger_alpha_2};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="text"]:disabled {
+    color: {danger_alpha_3};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="link"] {
+    color: {danger};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="link"]:hover {
+    color: {danger_alpha_5};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="link"]:pressed {
+    color: {danger_alpha_5};
+}
+
+QPushButton#xpushbutton[color="danger"][variant="link"]:disabled {
+    color: {danger_alpha_3};
+}
+
+QPushButton#xpushbutton[color="tertiary"] {
+    border-color: {tertiary};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="solid"] {
+    background-color: {tertiary};
+    border-color: {tertiary};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="solid"]:hover {
+    background-color: {tertiary_alpha_8};
+    border-color: {tertiary_alpha_8};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="solid"]:pressed {
+    background-color: {tertiary_alpha_8};
+    border-color: {tertiary_alpha_8};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="solid"]:disabled {
+    background-color: {tertiary_alpha_3};
+    border-color: transparent;
+    color: #f5f5f5;
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="outlined"] {
+    border-color: {tertiary};
+    color: {tertiary};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="outlined"]:hover {
+    background-color: {tertiary_alpha_1};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="outlined"]:pressed {
+    background-color: {tertiary_alpha_2};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="outlined"]:disabled {
+    background-color: transparent;
+    border-color: {tertiary_alpha_3};
+    color: {tertiary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="filled"] {
+    background-color: {tertiary_alpha_1};
+    border-color: {tertiary_alpha_1};
+    color: {tertiary};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="filled"]:hover {
+    background-color: {tertiary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="filled"]:pressed {
+    background-color: {tertiary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="filled"]:disabled {
+    background-color: {tertiary_alpha_1};
+    border-color: {tertiary_alpha_3};
+    color: {tertiary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="text"] {
+    color: {tertiary};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="text"]:hover {
+    background-color: {tertiary_alpha_1};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="text"]:pressed {
+    background-color: {tertiary_alpha_2};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="text"]:disabled {
+    color: {tertiary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="link"] {
+    color: {tertiary};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="link"]:hover {
+    color: {tertiary_alpha_5};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="link"]:pressed {
+    color: {tertiary_alpha_5};
+}
+
+QPushButton#xpushbutton[color="tertiary"][variant="link"]:disabled {
+    color: {tertiary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="secondary"] {
+    border-color: {secondary};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="solid"] {
+    background-color: {secondary};
+    border-color: {secondary};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="solid"]:hover {
+    background-color: {secondary_alpha_8};
+    border-color: {secondary_alpha_8};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="solid"]:pressed {
+    background-color: {secondary_alpha_8};
+    border-color: {secondary_alpha_8};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="solid"]:disabled {
+    background-color: {secondary_alpha_3};
+    border-color: transparent;
+    color: #f5f5f5;
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="outlined"] {
+    border-color: {secondary};
+    color: {secondary};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="outlined"]:hover {
+    background-color: {secondary_alpha_1};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="outlined"]:pressed {
+    background-color: {secondary_alpha_2};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="outlined"]:disabled {
+    background-color: transparent;
+    border-color: {secondary_alpha_3};
+    color: {secondary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="filled"] {
+    background-color: {secondary_alpha_1};
+    border-color: {secondary_alpha_1};
+    color: {secondary};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="filled"]:hover {
+    background-color: {secondary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="filled"]:pressed {
+    background-color: {secondary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="filled"]:disabled {
+    background-color: {secondary_alpha_1};
+    border-color: {secondary_alpha_3};
+    color: {secondary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="text"] {
+    color: {secondary};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="text"]:hover {
+    background-color: {secondary_alpha_1};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="text"]:pressed {
+    background-color: {secondary_alpha_2};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="text"]:disabled {
+    color: {secondary_alpha_3};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="link"] {
+    color: {secondary};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="link"]:hover {
+    color: {secondary_alpha_5};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="link"]:pressed {
+    color: {secondary_alpha_5};
+}
+
+QPushButton#xpushbutton[color="secondary"][variant="link"]:disabled {
+    color: {secondary_alpha_3};
+}

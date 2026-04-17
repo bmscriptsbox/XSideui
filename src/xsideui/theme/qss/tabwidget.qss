@@ -1,0 +1,53 @@
+/* 容器背景 */
+QTabWidget#xtabwidget {
+    background-color: transparent;
+    padding: {spacing_s} {spacing_m};
+}
+
+/* 内容区域 - 横向布局 */
+QTabWidget#xtabwidget::pane {
+    border-top: 1px solid {border};
+    background-color: {bg_0};
+    margin-top: -1px;
+    padding: {spacing_s} 0px;
+}
+
+
+/* 标签栏基础样式 */
+QTabBar#xtabbar {
+    background-color: transparent;
+    border: none;
+    qproperty-drawBase: 0;
+}
+
+
+/* 每一个 Tab 的样式 - 横向布局 */
+QTabBar#xtabbar::tab {
+    background-color: transparent;
+    border: none;
+    padding: {spacing_s} {spacing_m};
+    margin-right: {spacing_xs};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    color: {text_0};
+    min-width: 70px;
+    min-height: 32px;
+
+}
+
+
+
+/* 悬停状态 */
+QTabBar#xtabbar::tab:hover {
+    color: {primary};
+}
+
+/* 选中状态 */
+QTabBar#xtabbar::tab:selected {
+    color: {primary};
+}
+
+/* 隐藏默认的指示器，使用自定义绘制 */
+QTabBar#xtabbar::tab:selected:!only-one {
+    border: none;
+}

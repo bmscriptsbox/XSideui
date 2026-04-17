@@ -1,0 +1,37 @@
+/* 基础背景与圆角 */
+QFrame#xcollapse-container {
+    background-color: {bg_1};
+    border: 1px solid {border};
+    border-radius: 6px;
+}
+
+/* 标题栏默认状态 */
+QFrame#xcollapse-header {
+    background-color: {fill_alpha_1};
+    border-radius: 6px;
+}
+
+/* 鼠标悬停 */
+QFrame#xcollapse-header:hover {
+    background-color: {fill_alpha_3};
+}
+
+/* 展开时的标题栏样式 (通过属性切换) */
+QFrame#xcollapse-header[active="true"] {
+    background-color: {fill_alpha_2};
+    border-bottom: 1px solid {bg_1};
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* 标题文字 */
+QLabel#xcollapse-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: {text_1};
+}
+
+/* 内容区域 */
+QFrame#xcollapse-content {
+    background-color: transparent;
+}

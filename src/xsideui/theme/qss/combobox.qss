@@ -1,0 +1,112 @@
+/* 下拉框组件 */
+QComboBox#xcombobox {
+    background-color: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    padding: {spacing_s} {spacing_m};
+    padding-right: 32px;
+}
+
+QComboBox#xcombobox[borderVisible="none"] {
+    border: none;
+}
+
+QComboBox#xcombobox[componentSize="large"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_l};
+    border-radius: {radius_l};
+    min-height:{height_large}
+}
+
+QComboBox#xcombobox[componentSize="default"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_m};
+    border-radius: {radius_m};
+    min-height:{height_default}
+}
+
+QComboBox#xcombobox[componentSize="small"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_s};
+    border-radius: {radius_s};
+    min-height:{height_small}
+}
+
+QComboBox#xcombobox[componentSize="mini"] {
+    padding: 0px {spacing_s};
+    font-size: {font_size_xs};
+    border-radius: {radius_s};
+    min-height:{height_mini}
+}
+
+QComboBox#xcombobox:hover {
+    border-color: {text_2};
+}
+
+QComboBox#xcombobox:focus {
+    border-color: {primary};
+}
+
+
+
+QComboBox#xcombobox:disabled {
+    background-color: {bg_2};
+    border-color: {border};
+    color: {text_disabled};
+}
+
+/* 下拉箭头区域 */
+QComboBox#xcombobox::drop-down {
+    border: none;
+    width: 0px;
+}
+
+/* 箭头标签 */
+QLabel#xcombobox-arrow {
+    border: none;
+    background-color: transparent;
+    padding: 2px;
+}
+
+QLabel#xcombobox-arrow:hover {
+    background-color: {fill_alpha_2};
+    border-radius: {radius_s};
+}
+
+/* 下拉列表 */
+QComboBox#xcombobox QAbstractItemView {
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    background-color: {bg_2};
+    outline: none;
+    padding: 2px 0;
+}
+
+/* 下拉列表项 */
+QComboBox#xcombobox QAbstractItemView::item {
+    padding: {spacing_s} {spacing_m};
+    color: {text_1};
+    background-color: transparent;
+}
+
+/* 下拉列表项图标 */
+QComboBox#xcombobox[deletable="true"] QAbstractItemView::item::icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* 下拉列表项悬停 */
+QComboBox#xcombobox QAbstractItemView::item:hover {
+    background-color: {fill_alpha_3};
+}
+
+/* 下拉列表项选中 */
+QComboBox#xcombobox QAbstractItemView::item:selected {
+    background-color: {primary_alpha_1};
+    color: {primary};
+}
+
+

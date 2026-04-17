@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7c90f51b-610e-4f29-bdb9-76a8de027b91" name="更改" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="393GzNzsyEJez7MCBu00zd30WLb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python 测试.Doctest via pytest (tabwidget.py 内).executor": "Run",
+    "Python 测试.Doctest via xsideui.widgets.badge.XTextBadge 的 pytest.executor": "Run",
+    "Python 测试.Doctest via xsideui.widgets.card.XHeaderCard 的 pytest.executor": "Run",
+    "Python 测试.Doctests (XCheckBox 内).executor": "Run",
+    "Python 测试.Doctests (XLabel 内).executor": "Run",
+    "Python 测试.Doctests (switch 内).executor": "Run",
+    "Python.1111.executor": "Run",
+    "Python.22.executor": "Run",
+    "Python.222.executor": "Run",
+    "Python.avatar.executor": "Run",
+    "Python.badge.executor": "Run",
+    "Python.base.executor": "Run",
+    "Python.card.executor": "Run",
+    "Python.carousel_example (1).executor": "Run",
+    "Python.carousel_example.executor": "Run",
+    "Python.collapse.executor": "Run",
+    "Python.dialog.executor": "Run",
+    "Python.divider.executor": "Run",
+    "Python.enum.executor": "Run",
+    "Python.example_carousel.executor": "Run",
+    "Python.example_dialog.executor": "Run",
+    "Python.example_flow_layout.executor": "Run",
+    "Python.example_icon_usage (1).executor": "Run",
+    "Python.example_icon_usage.executor": "Run",
+    "Python.example_navbar.executor": "Run",
+    "Python.example_navtree.executor": "Run",
+    "Python.example_qdateedit.executor": "Run",
+    "Python.example_qdatetimeedit.executor": "Run",
+    "Python.example_scrollarea.executor": "Run",
+    "Python.example_timeedit.executor": "Run",
+    "Python.example_titlebar.executor": "Run",
+    "Python.example_xavatar.executor": "Run",
+    "Python.example_xbadge.executor": "Run",
+    "Python.example_xcard.executor": "Run",
+    "Python.example_xcheckbox.executor": "Run",
+    "Python.example_xcodeblock.executor": "Run",
+    "Python.example_xcollapse.executor": "Run",
+    "Python.example_xcombobox.executor": "Run",
+    "Python.example_xdivider (1).executor": "Run",
+    "Python.example_xdivider.executor": "Run",
+    "Python.example_xgroupbox.executor": "Run",
+    "Python.example_ximage.executor": "Run",
+    "Python.example_xlabel (1).executor": "Run",
+    "Python.example_xlabel.executor": "Run",
+    "Python.example_xlabel_highdpi.executor": "Run",
+    "Python.example_xlineedit.executor": "Run",
+    "Python.example_xlistwidget.executor": "Run",
+    "Python.example_xloadingmask.executor": "Run",
+    "Python.example_xmenu.executor": "Run",
+    "Python.example_xmessagebox.executor": "Run",
+    "Python.example_xnotification.executor": "Run",
+    "Python.example_xpagination.executor": "Run",
+    "Python.example_xpopover.executor": "Run",
+    "Python.example_xprogressbar.executor": "Run",
+    "Python.example_xpushbutton.executor": "Run",
+    "Python.example_xradio.executor": "Run",
+    "Python.example_xslider.executor": "Run",
+    "Python.example_xspinbox.executor": "Run",
+    "Python.example_xswitch.executor": "Run",
+    "Python.example_xtablewidget.executor": "Run",
+    "Python.example_xtabwidget.executor": "Run",
+    "Python.example_xtextedit.executor": "Run",
+    "Python.example_xtimeedit.executor": "Run",
+    "Python.example_xupload.executor": "Run",
+    "Python.example_xwidget.executor": "Run",
+    "Python.flow_layout_example.executor": "Run",
+    "Python.i18n.executor": "Run",
+    "Python.image.executor": "Run",
+    "Python.label.executor": "Run",
+    "Python.label_example.executor": "Run",
+    "Python.lineedit.executor": "Run",
+    "Python.listwidget.executor": "Run",
+    "Python.loading_mask.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.main_example.executor": "Run",
+    "Python.messagebox.executor": "Run",
+    "Python.pagination.executor": "Run",
+    "Python.popover.executor": "Run",
+    "Python.pushbutton.executor": "Run",
+    "Python.spinbox.executor": "Run",
+    "Python.tablewidget.executor": "Run",
+    "Python.tabwidget.executor": "Run",
+    "Python.test_performance.executor": "Run",
+    "Python.test_simple (1).executor": "Run",
+    "Python.test_simple.executor": "Run",
+    "Python.test_theme_system.executor": "Run",
+    "Python.test_themed_label.executor": "Run",
+    "Python.test_xicon.executor": "Run",
+    "Python.theme.executor": "Run",
+    "Python.title_bar.executor": "Run",
+    "Python.ttt.executor": "Run",
+    "Python.widget.executor": "Run",
+    "Python.xbadge_example.executor": "Run",
+    "Python.xcard_example (1).executor": "Run",
+    "Python.xcard_example.executor": "Run",
+    "Python.xcheckbox_example (1).executor": "Run",
+    "Python.xcheckbox_example.executor": "Run",
+    "Python.xcodeblock_example.executor": "Run",
+    "Python.xcollapse_example.executor": "Run",
+    "Python.xcombobox_example.executor": "Run",
+    "Python.xdateedit_example (1).executor": "Run",
+    "Python.xdateedit_example.executor": "Run",
+    "Python.xdatetimeedit_example (1).executor": "Run",
+    "Python.xdatetimeedit_example.executor": "Run",
+    "Python.xdialog_example.executor": "Run",
+    "Python.xdivider_example (1).executor": "Run",
+    "Python.xdivider_example.executor": "Run",
+    "Python.xgroupbox_example.executor": "Run",
+    "Python.xi18n_example.executor": "Run",
+    "Python.xicon.executor": "Run",
+    "Python.xicon_engine.executor": "Run",
+    "Python.xicon_example.executor": "Run",
+    "Python.ximage_example (1).executor": "Run",
+    "Python.ximage_example.executor": "Run",
+    "Python.xlabel_example.executor": "Run",
+    "Python.xlineedit_example.executor": "Run",
+    "Python.xlistwidget_example.executor": "Run",
+    "Python.xloadingmask_example.executor": "Run",
+    "Python.xmenu_example.executor": "Run",
+    "Python.xmessagebox_example (1).executor": "Run",
+    "Python.xmessagebox_example.executor": "Run",
+    "Python.xnavsimple_example_.executor": "Run",
+    "Python.xnavtree_example.executor": "Run",
+    "Python.xnotif_example.executor": "Run",
+    "Python.xnotif_examplepy.executor": "Run",
+    "Python.xpagination_example.executor": "Run",
+    "Python.xpopover_example.executor": "Run",
+    "Python.xprogressbar_example.executor": "Run",
+    "Python.xpushbutton_example (1).executor": "Run",
+    "Python.xpushbutton_example.executor": "Run",
+    "Python.xradio_example (1).executor": "Run",
+    "Python.xradio_example.executor": "Run",
+    "Python.xslider_example.executor": "Run",
+    "Python.xspinbox_example (1).executor": "Run",
+    "Python.xspinbox_example.executor": "Run",
+    "Python.xswitch_example (1).executor": "Run",
+    "Python.xswitch_example.executor": "Run",
+    "Python.xtablewidget_example.executor": "Run",
+    "Python.xtabwidget_example (1).executor": "Run",
+    "Python.xtabwidget_example.executor": "Run",
+    "Python.xtextedit_example.executor": "Run",
+    "Python.xtimeedit_example (1).executor": "Run",
+    "Python.xtimeedit_example.executor": "Run",
+    "Python.xupload_example (1).executor": "Run",
+    "Python.xupload_example.executor": "Run",
+    "Python.xwidget_example (1).executor": "Run",
+    "Python.xwidget_example.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/PythonCode/xsideui-new/src/xsideui/icon",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PythonCode\xsideui-new\src\xsideui\icon" />
+      <recent name="D:\PythonCode\xsideui-new\example" />
+      <recent name="D:\PythonCode\xsideui-new\src\xsideui\i18n\222" />
+      <recent name="D:\PythonCode\xsideui-new\example\img" />
+      <recent name="D:\PythonCode\xsideui-new\docs\images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PythonCode\xsideui-new\example\langs" />
+      <recent name="D:\PythonCode\demo_weidget\docs\imgs" />
+      <recent name="D:\PythonCode\demo_weidget\example" />
+      <recent name="D:\PythonCode\demo_weidget" />
+      <recent name="D:\PythonCode\demo_weidget\src\xsideui" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.xcard_example">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="demo_weidget" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main_example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="xsideui-new" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example/main_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="xbadge_example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="xsideui-new" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example/xbadge_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="xcard_example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="xsideui-new" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example/xcard_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="xi18n_example" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="xsideui-new" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/example" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example/xi18n_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Doctest via xsideui.widgets.card.XHeaderCard 的 pytest" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="xsideui-new" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;--doctest-modules&quot;" />
+      <option name="_new_target" value="&quot;xsideui.widgets.card.XHeaderCard&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.xcard_example" />
+        <item itemvalue="Python 测试.Doctest via xsideui.widgets.card.XHeaderCard 的 pytest" />
+        <item itemvalue="Python.main_example" />
+        <item itemvalue="Python.xi18n_example" />
+        <item itemvalue="Python.xbadge_example" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-e0ed3721d81e-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.159" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="7c90f51b-610e-4f29-bdb9-76a8de027b91" name="更改" comment="" />
+      <created>1769917601631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1769917601631</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.qss" />
+  </component>
+</project>

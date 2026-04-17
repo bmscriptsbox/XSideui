@@ -1,0 +1,247 @@
+"""
+样式文件加载器（优化版）
+QSS File Loader (Optimized)
+
+直接加载和管理 QSS 样式文件，使用更高效的变量替换
+"""
+
+import os
+import re
+from typing import Dict
+
+from .thmem_config import ThemeConfig
+
+
+class QSSLoader:
+    """QSS 文件加载器（优化版）
+    
+    优化策略：
+    1. 使用正则表达式一次性替换所有变量
+    2. 使用更高效的缓存键生成
+    3. 预编译正则表达式
+    """
+    
+    def __init__(self, qss_dir: str = None):
+        """初始化 QSS 加载器
+        
+        Args:
+            qss_dir: QSS 文件目录，如果为 None 则使用默认目录
+        """
+        if qss_dir is None:
+            current_dir = os.path.dirname(os.path.abspath(__file__))
+            qss_dir = os.path.join(current_dir, "qss")
+        
+        self._qss_dir = qss_dir
+        self._cache = {}
+        
+        # 预编译变量匹配正则
+        self._var_pattern = re.compile(r'\{(\w+)\}')
+    
+    def load(self, qss_file: str, variables: Dict[str, str] = None) -> str:
+        """加载 QSS 文件
+        
+        Args:
+            qss_file: QSS 文件名（如 "label.qss"）
+            variables: 变量字典（如 {"primary_color": "#165DFF"}）
+            
+        Returns:
+            QSS 样式字符串
+        """
+        file_path = os.path.join(self._qss_dir, qss_file)
+        
+        # 检查缓存
+        cache_key = self._make_cache_key(qss_file, variables)
+        if cache_key in self._cache:
+            return self._cache[cache_key]
+        
+        # 读取文件
+        with open(file_path, 'r', encoding='utf-8') as f:
+            qss = f.read()
+        
+        # 替换变量（使用正则表达式一次性替换）
+        if variables:
+            qss = self._var_pattern.sub(
+                lambda m: variables.get(m.group(1), m.group(0)),
+                qss
+            )
+        
+        # 缓存结果
+        self._cache[cache_key] = qss
+        
+        return qss
+
+    
+    def load_theme_stylesheet(self, theme_config: ThemeConfig) -> str:
+        """加载主题样式表
+        
+        Args:
+            theme_config: 主题配置
+            
+        Returns:
+            完整的主题 QSS 样式字符串
+        """
+        # 准备颜色变量
+        variables = {
+            "primary": theme_config.colors.primary,
+            "secondary": theme_config.colors.secondary,
+            "tertiary": theme_config.colors.tertiary,
+            "success": theme_config.colors.success,
+            "warning": theme_config.colors.warning,
+            "danger": theme_config.colors.danger,
+            "link": theme_config.colors.link,
+            "text_0": theme_config.colors.text_0,
+            "text_1": theme_config.colors.text_1,
+            "text_2": theme_config.colors.text_2,
+            "text_3": theme_config.colors.text_3,
+            "text_disabled": theme_config.colors.text_disabled,
+            "bg_0": theme_config.colors.bg_0,
+            "bg_1": theme_config.colors.bg_1,
+            "bg_2": theme_config.colors.bg_2,
+            "fill": theme_config.colors.fill,
+            "border": theme_config.colors.border,
+            "shadow": theme_config.colors.shadow,
+            "code_keyword": theme_config.colors.code_keyword,
+            "code_string": theme_config.colors.code_string,
+            "code_comment": theme_config.colors.code_comment,
+            "code_function": theme_config.colors.code_function,
+            "code_number": theme_config.colors.code_number,
+            "code_operator": theme_config.colors.code_operator,
+        }
+        
+        # 添加带透明度的颜色变量
+        def _color_with_alpha(color: str, alpha: float) -> str:
+            if color.startswith('#'):
+                color = color[1:]
+            if len(color) == 6:
+                r = int(color[:2], 16)
+                g = int(color[2:4], 16)
+                b = int(color[4:], 16)
+                return f"rgba({r}, {g}, {b}, {alpha})"
+            return color
+        
+        variables.update({
+            "primary_alpha_1": _color_with_alpha(theme_config.colors.primary, 0.1),
+            "primary_alpha_3": _color_with_alpha(theme_config.colors.primary, 0.3),
+            "primary_alpha_5": _color_with_alpha(theme_config.colors.primary, 0.5),
+            "primary_alpha_8": _color_with_alpha(theme_config.colors.primary, 0.8),
+            "primary_alpha_10": _color_with_alpha(theme_config.colors.primary, 0.1),
+            "success_alpha_1": _color_with_alpha(theme_config.colors.success, 0.1),
+            "success_alpha_3": _color_with_alpha(theme_config.colors.success, 0.3),
+            "success_alpha_5": _color_with_alpha(theme_config.colors.success, 0.5),
+            "success_alpha_8": _color_with_alpha(theme_config.colors.success, 0.8),
+            "warning_alpha_1": _color_with_alpha(theme_config.colors.warning, 0.1),
+            "warning_alpha_3": _color_with_alpha(theme_config.colors.warning, 0.3),
+            "warning_alpha_5": _color_with_alpha(theme_config.colors.warning, 0.5),
+            "warning_alpha_8": _color_with_alpha(theme_config.colors.warning, 0.8),
+            "danger_alpha_1": _color_with_alpha(theme_config.colors.danger, 0.1),
+            "danger_alpha_3": _color_with_alpha(theme_config.colors.danger, 0.3),
+            "danger_alpha_5": _color_with_alpha(theme_config.colors.danger, 0.5),
+            "danger_alpha_8": _color_with_alpha(theme_config.colors.danger, 0.8),
+            "tertiary_alpha_1": _color_with_alpha(theme_config.colors.tertiary, 0.1),
+            "tertiary_alpha_3": _color_with_alpha(theme_config.colors.tertiary, 0.3),
+            "tertiary_alpha_5": _color_with_alpha(theme_config.colors.tertiary, 0.5),
+            "tertiary_alpha_8": _color_with_alpha(theme_config.colors.tertiary, 0.8),
+            "secondary_alpha_1": _color_with_alpha(theme_config.colors.secondary, 0.1),
+            "secondary_alpha_3": _color_with_alpha(theme_config.colors.secondary, 0.3),
+            "secondary_alpha_5": _color_with_alpha(theme_config.colors.secondary, 0.5),
+            "secondary_alpha_8": _color_with_alpha(theme_config.colors.secondary, 0.8),
+            "fill_alpha_1": _color_with_alpha(theme_config.colors.fill, 0.1),
+            "fill_alpha_2": _color_with_alpha(theme_config.colors.fill, 0.2),
+            "fill_alpha_3": _color_with_alpha(theme_config.colors.fill, 0.3),
+            "fill_alpha_4": _color_with_alpha(theme_config.colors.fill, 0.4),
+            "fill_alpha_6": _color_with_alpha(theme_config.colors.fill, 0.6),
+            "fill_alpha_8": _color_with_alpha(theme_config.colors.fill, 0.8),
+            "text_1_alpha_1": _color_with_alpha(theme_config.colors.text_1, 0.1),
+            "text_1_alpha_2": _color_with_alpha(theme_config.colors.text_1, 0.2),
+            "text_1_alpha_3": _color_with_alpha(theme_config.colors.text_1, 0.3),
+            "text_1_alpha_8": _color_with_alpha(theme_config.colors.text_1, 0.8),
+
+        })
+
+        # 添加字体变量
+        if theme_config.fonts:
+            variables.update({f"font_{k}": v for k, v in theme_config.fonts.items()})
+        
+        # 添加间距变量
+        if theme_config.spacing:
+            variables.update({f"spacing_{k}": v for k, v in theme_config.spacing.items()})
+        
+        # 添加高度变量
+        if theme_config.height:
+            variables.update({f"height_{k}": v for k, v in theme_config.height.items()})
+        
+        # 添加圆角变量
+        if theme_config.border_radius:
+            variables.update({f"radius_{k}": v for k, v in theme_config.border_radius.items()})
+        
+        # 添加边框宽度变量
+        if theme_config.border_width:
+            variables.update({f"border_{k}": v for k, v in theme_config.border_width.items()})
+        
+        # 添加透明度变量
+        if theme_config.opacity:
+            variables.update({f"opacity_{k}": v for k, v in theme_config.opacity.items()})
+        
+        # 添加阴影变量
+        if theme_config.shadow:
+            variables.update({f"shadow_{k}": v for k, v in theme_config.shadow.items()})
+        
+        # 检查缓存
+        cache_key = f"theme:{theme_config.colors.primary}"
+        if cache_key in self._cache:
+            return self._cache[cache_key]
+        
+        # 加载所有 QSS 文件
+        qss_parts = []
+        
+        # 加载基础样式
+        if os.path.exists(os.path.join(self._qss_dir, "base.qss")):
+            base_qss = self.load("base.qss", variables)
+            qss_parts.append(base_qss)
+        
+        # 加载组件样式
+        for filename in os.listdir(self._qss_dir):
+            if filename.endswith(".qss") and filename not in ["base.qss", "theme.qss"]:
+                component_qss = self.load(filename, variables)
+                qss_parts.append(component_qss)
+        
+        # 合并并缓存
+        result = "\n".join(qss_parts)
+        self._cache[cache_key] = result
+        
+        return result
+    
+    def _make_cache_key(self, qss_file: str, variables: Dict[str, str] = None) -> str:
+        """生成缓存键（优化版）
+        
+        Args:
+            qss_file: QSS 文件名
+            variables: 变量字典
+            
+        Returns:
+            缓存键字符串
+        """
+        if not variables:
+            return qss_file
+        
+        # 使用 frozenset 代替 tuple(sorted())，更高效
+        vars_hash = hash(frozenset(variables.items()))
+        return f"{qss_file}:{vars_hash}"
+    
+    def clear_cache(self):
+        """清除缓存"""
+        self._cache.clear()
+    
+    def invalidate_theme(self, theme_primary: str):
+        """使指定主题的缓存失效
+        
+        Args:
+            theme_primary: 主题主色
+        """
+        keys_to_remove = [k for k in self._cache.keys() if k.startswith(f"theme:{theme_primary}")]
+        for key in keys_to_remove:
+            del self._cache[key]
+
+
+# 全局实例
+qss_loader = QSSLoader()

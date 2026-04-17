@@ -1,0 +1,73 @@
+QTreeWidget#xnavtree {
+    background: transparent;
+    border: none;
+    outline: none; /* 移除选中时的虚线 */
+}
+
+/* 隐藏系统默认的选择背景，防止干扰 Delegate */
+QTreeWidget#xnavtree::item:selected,
+QTreeWidget#xnavtree::item:hover {
+    background: transparent;
+}
+
+/* 美化滚动条 */
+QTreeWidget#xnavtree QScrollBar:vertical {
+    width: 4px;
+    background: transparent;
+    margin: 0px;
+}
+QTreeWidget#xnavtree QScrollBar::handle:vertical {
+    background: {fill};
+    min-height: 20px;
+    border-radius: 2px;
+}
+
+/* 垂直滚动条整体 */
+QTreeWidget#xnavtree QScrollBar:vertical {
+    border: none;
+    background: transparent; /* 背景透明，保持侧边栏纯净 */
+    width: 6px;               /* 极窄宽度 */
+    margin: 0px 0px 0px 0px;
+}
+
+/* 滚动条滑块 (Handle) */
+QTreeWidget#xnavtree QScrollBar::handle:vertical {
+    background: rgba(120, 120, 120, 0.2); /* 默认半透明灰色 */
+    min-height: 30px;
+    border-radius: 3px;                   /* 圆角胶囊形状 */
+}
+
+/* 鼠标悬停在滑块上时变深 */
+QTreeWidget#xnavtree QScrollBar::handle:vertical:hover {
+    background: rgba(120, 120, 120, 0.4);
+}
+
+/* 鼠标按下划块时 */
+QTreeWidget#xnavtree QScrollBar::handle:vertical:pressed {
+    background: {primary};               /* 使用你的主题色，或者更深的灰色 */
+}
+
+/* 隐藏滚动条上下的控制按钮 (箭头) */
+QTreeWidget#xnavtree QScrollBar::add-line:vertical,
+QTreeWidget#xnavtree QScrollBar::sub-line:vertical {
+    border: none;
+    background: none;
+    height: 0px;
+}
+
+/* 隐藏滚动条轨道 (Track) */
+QTreeWidget#xnavtree QScrollBar::add-page:vertical,
+QTreeWidget#xnavtree QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+/* 水平滚动条 (如果需要) */
+QTreeWidget#xnavtree QScrollBar:horizontal {
+    border: none;
+    background: transparent;
+    height: 6px;
+}
+QTreeWidget#xnavtree QScrollBar::handle:horizontal {
+    background: rgba(120, 120, 120, 0.2);
+    border-radius: 3px;
+}

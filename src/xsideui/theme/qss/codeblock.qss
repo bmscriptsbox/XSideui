@@ -1,0 +1,82 @@
+QPlainTextEdit#xcodeblock {
+    background-color: {bg_2};
+    color: {text_1};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+    padding: {spacing_m};
+    font-family: {font_family};
+    font-size: {font_size_s};
+    selection-background-color: {primary_alpha_2};
+    selection-color: {text_1};
+}
+
+
+QPlainTextEdit#xcodeblock:hover {
+    border-color: {text_2};
+}
+
+QPlainTextEdit#xcodeblock:focus {
+    border-color: {primary};
+}
+
+QPlainTextEdit#xcodeblock:disabled {
+    background-color: {primary_fill_3};
+    color: {text_3};
+    border-color: {border};
+}
+
+QPlainTextEdit#xcodeblock QScrollBar:vertical {
+    background: transparent;
+    width: 6px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::handle:vertical {
+    background: {text_1_alpha_2};
+    min-height: 30px;
+    border-radius: 3px;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::handle:vertical:hover {
+    background: {text_1_alpha_3};
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::add-line:vertical,
+QPlainTextEdit#xcodeblock QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::add-page:vertical,
+QPlainTextEdit#xcodeblock QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar:horizontal {
+    background: transparent;
+    height: 6px;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::handle:horizontal {
+    background: {text_1_alpha_2};
+    min-width: 30px;
+    border-radius: 3px;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::handle:horizontal:hover {
+    background: {text_1_alpha_3};
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::add-line:horizontal,
+QPlainTextEdit#xcodeblock QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+QPlainTextEdit#xcodeblock QScrollBar::add-page:horizontal,
+QPlainTextEdit#xcodeblock QScrollBar::sub-page:horizontal {
+    background: none;
+}

@@ -1,0 +1,26 @@
+
+/* 拖拽区域基础样式 */
+QWidget#xupload-drop-area {
+    background-color: {bg_1};
+    border: 2px dashed {border};
+    border-radius: {radius_l};
+    /* 增加平滑过渡效果（如果PySide支持） */
+}
+
+/* 隐藏边框状态 */
+QWidget#xupload-drop-area[show-border="false"] {
+    border: none;
+}
+
+/* 鼠标悬停：加深边框颜色 */
+QWidget#xupload-drop-area:hover {
+    border-color: {success_alpha_3};
+    background-color: {success_alpha_1};
+}
+
+/* 拖拽进入状态：实线高亮并改变背景 */
+QWidget#xupload-drop-area[dragging="true"] {
+    background-color: {success_alpha_1};
+    border: 2px solid {success_alpha_3};
+}
+

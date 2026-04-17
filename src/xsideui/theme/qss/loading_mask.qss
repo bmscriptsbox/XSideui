@@ -1,0 +1,12 @@
+QFrame#xloadingmask {
+    /* 建议直接在这里通过颜色变量控制遮罩深度 */
+    background-color: {fill_alpha_6};
+    border: none;
+}
+
+QLabel#loading-spinner {
+    background-color: transparent;
+    /* 确保没有边框干扰绘图 */
+    border: none;
+}
+

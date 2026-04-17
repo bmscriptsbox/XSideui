@@ -1,0 +1,28 @@
+QWidget#xpopover {
+    background: transparent;
+    border: none;
+}
+
+QWidget#popover-container {
+    background: {bg_2};
+    border: 1px solid {border};
+    border-radius: {radius_m};
+}
+
+QLabel#title {
+    background-color: transparent;
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    font-weight: {weight_medium};
+    padding: 2px 0px;
+}
+
+QLabel#content {
+    background-color: transparent;
+    color: {text_1};
+    font-family: {font_family};
+    font-size: {font_size_s};
+    padding: 2px 0px;
+}
+

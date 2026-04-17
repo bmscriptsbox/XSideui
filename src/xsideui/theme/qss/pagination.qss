@@ -1,0 +1,38 @@
+/* 分页器样式 */
+QWidget#xpagination {
+    background: transparent;
+}
+
+/* 页码按钮 */
+QPushButton#xpagination-page-btn {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: {radius_s};
+    color: {text_1};
+    font-size: {font_size_s};
+    padding: {spacing_xs} {spacing_s};
+    font-size: {font_size_s};
+
+}
+
+QPushButton#xpagination-page-btn:hover {
+    background: {primary_alpha_3};
+    padding: {spacing_xs} {spacing_s};
+    color: {text_1};
+
+}
+
+QPushButton#xpagination-page-btn:checked {
+    background: {primary};
+    color: #ffffff;
+    border-color: {primary};
+}
+
+QPushButton#xpagination-page-btn:disabled {
+    color: {text_disabled};
+}
+
+
+
+
+
