@@ -79,6 +79,28 @@ class XWidget(QWidget):
 
     def _apply_native_style(self):
         hwnd = self.winId().__int__()
+
+
+        # 调整窗口样式
+        style = windll.user32.GetWindowLongW(hwnd, -16)
+        # 保持 WS_MAXIMIZEBOX, WS_MINIMIZEBOX, WS_THICKFRAME (用于缩放和阴影)
+        new_style = style | 0x00020000 | 0x00010000 | 0x00040000
+        windll.user32.SetWindowLongW(hwnd, -16, new_style)
+
+        # 开启阴影 (针对 Win10/11)
+        class MARGINS(Structure):
+            _fields_ = [("left", c_int), ("right", c_int), ("top", c_int), ("bottom", c_int)]
+
+        margins = MARGINS(1, 1, 1, 1)
+        windll.dwmapi.DwmExtendFrameIntoClientArea(hwnd, byref(margins))
+
+        # 针对 Win11 的圆角
+        try:
+            windll.dwmapi.DwmSetWindowAttribute(hwnd, 33, byref(c_int(2)), 4)
+        except:
+            pass
+
+
         user32 = windll.user32
         style = user32.GetWindowLongW(hwnd, -16)  # GWL_STYLE
         # 移除标题栏和系统菜单，保留缩放边框
@@ -92,6 +114,7 @@ class XWidget(QWidget):
             pass
         # 刷新窗口样式
         user32.SetWindowPos(hwnd, 0, 0, 0, 0, 0, 0x0027)
+
 
     def nativeEvent(self, event_type, message):
         """处理 Windows 原生消息，实现无边框窗口的缩放、拖拽及 Snap Layouts"""

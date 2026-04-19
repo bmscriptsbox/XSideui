@@ -7,14 +7,14 @@ name = "xsideui"
 dynamic = ["version"]
 description = "A modern PySide2 / PySide6 component library with rich UI components and theme support"
 readme = "README.md"
-authors = [{ name = "heng zhi qi", email = "efupay@foxmail.com" }]
+authors = [{ name = "heng zhi qi", email = "Bmscriptsbox@163.com" }]
 license = { file = "LICENSE" }
-requires-python = ">=3.6"
+requires-python = ">=3.8"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/xsideui"
-Documentation = "https://github.com/yourusername/xsideui#readme"
-Repository = "https://github.com/yourusername/xsideui.git"
+Homepage = "https://github.com/Bmscriptsbox/xsideui"
+Documentation = "https://github.com/Bmscriptsbox/xsideui#readme"
+Repository = "https://github.com/Bmscriptsbox/xsideui.git"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
