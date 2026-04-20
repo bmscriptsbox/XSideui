@@ -1,5 +1,5 @@
 """
-Date Edit Component 日期编辑框组件
+日期编辑框组件
 """
 
 from typing import Union
@@ -11,16 +11,14 @@ from ..xenum import XSize
 
 
 class XDateEdit(QDateEdit):
-    """Date Edit Component 日期编辑框组件"""
-
     def __init__(self, size: Union[XSize, str] = XSize.DEFAULT, parent=None):
-        """
-        Initialize. 初始化。
+        """初始化日期编辑框组件。
 
-        Args:
-            size: 组件尺寸 (Component size)
-            parent: 父组件 (Parent widget)
-        """
+            Args:
+                size: 组件的尺寸规格。影响输入框的高度、字体大小以及弹出日历的缩放。
+                    支持 XSize 枚举或字符串（'small', 'default', 'large'）。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.setObjectName("xqdateedit")
         self._size_value = self._parse_size(size)

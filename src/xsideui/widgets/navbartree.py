@@ -120,6 +120,14 @@ class XNavTree(QTreeWidget):
     changed = Signal(str)
 
     def __init__(self, indent: int = 16, icon_size: int = 16, text_size: int = 13, parent=None):
+        """初始化导航树组件。
+
+            Args:
+                indent: 层级缩进宽度（像素）。
+                icon_size: 导航项图标的显示尺寸。
+                text_size: 导航项文本的字体大小。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.indent = indent
         self.icon_size = icon_size

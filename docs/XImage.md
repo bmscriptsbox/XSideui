@@ -14,14 +14,14 @@ from xsideui import XImage
 
 ## 参数
 
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `source` | str / QPixmap / QImage / bytes | "" | 图片源 |
-| `fit` | XImage.FitMode 或 str | XImage.FitMode.CONTAIN | 适应模式 |
-| `alt` | str | "" | 图片描述 |
-| `min_height` | int | 60 | 最小高度 |
-| `lazy` | bool | True | 是否启用懒加载 |
-| `parent` | QWidget | None | 父组件 |
+| 参数         | 类型 | 默认值                    | 说明      |
+|------------|------|------------------------|---------|
+| `source`   | str / QPixmap / QImage / bytes | ""                     | 图片源     |
+| `fit`      | XImage.FitMode 或 str | XImage.FitMode.CONTAIN | 适应模式    |
+| `alt`      | str | ""                     | 图片描述    |
+| `min_size` | int | 32                     | 最小尺寸    |
+| `lazy`     | bool | True                   | 是否启用懒加载 |
+| `parent`   | QWidget | None                   | 父组件     |
 
 ## 适应模式
 

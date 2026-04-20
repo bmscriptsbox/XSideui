@@ -1,4 +1,3 @@
-
 from ..utils.qt_compat import QWidget, QVBoxLayout, QHBoxLayout, QFrame, Qt, Signal, QPropertyAnimation, QEasingCurve
 from .pushbutton import XPushButton
 from ..xenum import XButtonVariant, XSize, XColor
@@ -7,12 +6,19 @@ from ..icon import XIcon, IconName
 
 
 class XCollapse(QWidget):
-    """优化版：修复残影与抖动的折叠面板"""
+    """折叠面板"""
 
     state_changed = Signal(bool)
 
     def __init__(self, title: str = "", expanded: bool = False, parent=None):
         super().__init__(parent)
+        """初始化折叠面板组件。
+
+            Args:
+                title: 面板头部显示的标题文字。
+                expanded: 初始展开状态。默认为 False（折叠状态）。
+                parent: 父级组件。
+            """
         self.collapsed = not expanded
         self._setup_ui(title)
 
@@ -45,7 +51,8 @@ class XCollapse(QWidget):
 
         self.title_label = XLabel(title)
         self.title_label.setObjectName("xcollapse-title")
-        self.arrow = XPushButton(icon=IconName.RIGHT, variant=XButtonVariant.LINK, size=XSize.MINI, color=XColor.TERTIARY)
+        self.arrow = XPushButton(icon=IconName.RIGHT, variant=XButtonVariant.LINK, size=XSize.MINI,
+                                 color=XColor.TERTIARY)
         h_layout.addWidget(self.title_label)
         h_layout.addStretch()
         h_layout.addWidget(self.arrow)
@@ -56,7 +63,7 @@ class XCollapse(QWidget):
         self.content.setAttribute(Qt.WA_OpaquePaintEvent, False)
 
         self.content_layout = QVBoxLayout(self.content)
-        self.content_layout.setContentsMargins(11,11,11,11)
+        self.content_layout.setContentsMargins(11, 11, 11, 11)
         self.content_layout.setSpacing(10)
 
         self.container_layout.addWidget(self.header)
@@ -77,7 +84,8 @@ class XCollapse(QWidget):
         return super().eventFilter(obj, event)
 
     def _update_arrow(self):
-        icon_name = XIcon.get(IconName.RIGHT, color=XColor.TERTIARY).icon() if self.collapsed else XIcon.get(IconName.DOWN, color=XColor.TERTIARY).icon()
+        icon_name = XIcon.get(IconName.RIGHT, color=XColor.TERTIARY).icon() if self.collapsed else XIcon.get(
+            IconName.DOWN, color=XColor.TERTIARY).icon()
         self.arrow.setIcon(icon_name)
 
     def toggle_panel(self):

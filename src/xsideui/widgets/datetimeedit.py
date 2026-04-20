@@ -1,25 +1,24 @@
 """
-DateTime Edit Component 日期时间编辑框组件
+日期时间编辑框组件
 """
 
 from typing import Union
-from ..utils.qt_compat import  QDateTimeEdit, QDateTime, QDate, QTime
+from ..utils.qt_compat import QDateTimeEdit, QDateTime, QDate, QTime
 from ..icon import IconName
 from ..theme import theme_manager
 from ..xenum import XSize
 from .xarrowbutton import XArrowButton
 
+
 class XDateTimeEdit(QDateTimeEdit):
-    """DateTime Edit Component 日期时间编辑框组件"""
-
     def __init__(self, size: Union[XSize, str] = XSize.DEFAULT, parent=None):
-        """
-        Initialize. 初始化。
+        """初始化日期时间编辑框组件。
 
-        Args:
-            size: 组件尺寸 (Component size)
-            parent: 父组件 (Parent widget)
-        """
+            Args:
+                size: 组件的尺寸规格。影响输入框高度、内部按钮大小及弹出窗体的布局缩放。
+                    支持 XSize 枚举或字符串（'small', 'default', 'large'）。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.setObjectName("xqdatetimeedit")
         self._size_value = self._parse_size(size)

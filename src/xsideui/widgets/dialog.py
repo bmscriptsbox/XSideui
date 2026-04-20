@@ -15,6 +15,14 @@ class XDialog(QDialog):
                  parent=None
                  ):
         super().__init__(parent=parent)
+        """初始化无边框对话框容器。
+
+            Args:
+                title: 对话框标题文字。
+                logo: 标题栏图标路径或图标名称。若为 None 则不显示图标。
+                show_close: 是否显示标题栏右侧的关闭按钮。
+                parent: 父窗口。设置后对话框将以模态或非模态形式依附于父窗口。
+            """
         self.setObjectName("XDialog")
         self._title = title
         self._logo = logo

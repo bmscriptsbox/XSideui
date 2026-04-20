@@ -10,13 +10,13 @@ class XCodeBlock(QPlainTextEdit):
     """代码块组件，支持语法高亮和主题适配"""
 
     def __init__(self, code: str = "", language: str = "python", parent=None):
-        """初始化代码块
+        """初始化代码块。
 
-        Args:
-            code: 初始代码文本
-            language: 编程语言
-            parent: 父组件
-        """
+            Args:
+                code: 初始显示的代码文本。
+                language: 编程语言类型（如 'python', 'cpp', 'javascript'），用于匹配高亮规则。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.setObjectName("xcodeblock")
         self.setAttribute(Qt.WA_StyledBackground, True)

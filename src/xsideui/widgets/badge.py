@@ -8,12 +8,10 @@ from typing import Union, Optional
 from ..utils.qt_compat import (QObject, QEvent, Qt, QTimer, QPoint, QRectF, QSize, QPainter, QColor, QFont,
                                QFontMetrics, QLabel, QWidget)
 
-
 from ..xenum import XColor
 from ..theme import theme_manager
 from ..i18n import XI18N
 from ..icon import XIcon, IconName
-
 
 
 class XBadgeManager(QObject):
@@ -155,7 +153,7 @@ class XBadgeBase(QLabel):
                  target: QWidget,
                  tag: str = "default",
                  offset=QPoint(0, 0),
-                 anchor = Anchor.TOP_RIGHT,
+                 anchor=Anchor.TOP_RIGHT,
                  ):
         """初始化徽章
 
@@ -202,7 +200,6 @@ class XBadgeBase(QLabel):
             for tag in tags:
                 cls.remove_tag_from(target, tag)
 
-
     def detach(self):
         """从注册表中把自己摘除并销毁"""
         try:
@@ -221,8 +218,6 @@ class XBadgeBase(QLabel):
 
         self.hide()
         self.deleteLater()
-
-
 
     def _on_theme_changed(self, theme_name):
         """主题切换回调，清除颜色缓存"""
@@ -300,21 +295,22 @@ class XTextBadge(XBadgeBase):
                  offset: QPoint = QPoint(0, 0),
                  anchor=XBadgeBase.Anchor.TOP_RIGHT,
                  tag: str = "default"):
-        """创建文本徽章
+        """创建并初始化一个带文本内容的徽章组件。
 
-        Args:
-            target: 目标组件
-            text: 显示的文字内容或翻译键
-            color: 徽章背景颜色
-            offset: 位置偏移量
-        """
-        super().__init__(target=target,tag=tag, offset=offset,anchor=anchor)
+            Args:
+                target: 目标组件。徽章将悬浮并定位在该组件之上。
+                text: 徽章显示的文字内容（如数字 "99+" 或标签文本）。支持国际化翻译键。
+                color: 徽章的背景颜色。支持 XColor 枚举或十六进制颜色字符串。
+                offset: 位置偏移量。用于在锚点定位的基础上进行微调，QPoint(x, y)。
+                anchor: 锚点位置。决定徽章相对于 target 的对齐方式（如右上、左下等）。
+                tag: 唯一标识符。用于在同一个 target 上管理多个不同的徽章。
+            """
+        super().__init__(target=target, tag=tag, offset=offset, anchor=anchor)
         self._color = color
         self._text_key = text
         self.padding = 12
         self.text_content = ""  # 先给个默认值防止 paintEvent 报错
         self.retranslateUi()
-
 
     def sizeHint(self):
         """计算徽章尺寸
@@ -330,7 +326,6 @@ class XTextBadge(XBadgeBase):
         fm = QFontMetrics(font)
         text_width = fm.horizontalAdvance(self.text_content)
         return QSize(max(26, int(text_width + self.padding + 10)), 24)
-
 
     def paintEvent(self, e):
         """绘制文本徽章
@@ -363,7 +358,6 @@ class XTextBadge(XBadgeBase):
 
         painter.drawText(inner_rect, Qt.AlignCenter, self.text_content)
 
-
     def set_content(self, text_key: str):
         """更新徽章文字内容
 
@@ -372,8 +366,6 @@ class XTextBadge(XBadgeBase):
         """
         self._text_key = text_key
         self.retranslateUi()
-
-
 
     def retranslateUi(self):
         """当语言切换或文本更新时调用"""
@@ -393,12 +385,12 @@ class XTextBadge(XBadgeBase):
 
         self.update()
 
-
     def changeEvent(self, event):
         """监听国际化事件"""
         if event.type() == QEvent.LanguageChange:
             self.retranslateUi()
         super().changeEvent(event)
+
 
 class XIconBadge(XBadgeBase):
     """
@@ -409,17 +401,22 @@ class XIconBadge(XBadgeBase):
 
     def __init__(self,
                  target: QWidget,
-                 icon_name: Union[str, 'IconName'], # 直接接收图标名
+                 icon_name: Union[str, 'IconName'],  # 直接接收图标名
                  color: Union[XColor, str] = XColor.PRIMARY,
                  size: int = 18,
                  offset: QPoint = QPoint(0, 0),
                  anchor=XBadgeBase.Anchor.TOP_RIGHT,
                  tag: str = "default"):
-        """
-        Args:
-            icon_name: 图标路径、QIcon 对象或 QPixmap
-            size: 徽章的固定尺寸
-        """
+        """创建并初始化一个带文本内容的徽章组件。
+
+            Args:
+                target: 目标组件。徽章将悬浮并定位在该组件之上。
+                icon_name: 图标名，枚举IconName的值或字符串。
+                color: 徽章的背景颜色。支持 XColor 枚举或十六进制颜色字符串。
+                offset: 位置偏移量。用于在锚点定位的基础上进行微调，QPoint(x, y)。
+                anchor: 锚点位置。决定徽章相对于 target 的对齐方式（如右上、左下等）。
+                tag: 唯一标识符。用于在同一个 target 上管理多个不同的徽章。
+            """
         super().__init__(target=target, tag=tag, offset=offset, anchor=anchor)
         self._color = color
         self._icon_name = icon_name
@@ -442,4 +439,3 @@ class XIconBadge(XBadgeBase):
 
         target_rect = self.rect()
         painter.drawPixmap(target_rect, pixmap)
-

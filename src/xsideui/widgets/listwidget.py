@@ -1,29 +1,21 @@
-"""
-List Widget Component 列表控件组件
-支持明暗主题切换的列表控件
-"""
 from ..utils.qt_compat import Qt, QListWidget
 
 
 class XListWidget(QListWidget):
-    """Base List Widget Component 列表控件基类
-    
-    列表控件的基类，提供共同的功能实现。
-    """
-    
+    """列表组件"""
+
     def __init__(
-        self,
-        show_border=True,
-        parent=None
+            self,
+            show_border=True,
+            parent=None
     ):
-        """
-        Initialize list widget.
-        
-        初始化列表控件。
-        
-        Args:
-            parent: Parent widget 父组件
-        """
+        """初始化列表控件基类。
+
+            Args:
+                show_border: 是否显示组件外边框。默认 True。
+                    若嵌入其他容器（如 XCard 或 XCollapse）时，通常设为 False。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.setObjectName("XListWidget")
         self._show_border = show_border
@@ -31,7 +23,6 @@ class XListWidget(QListWidget):
         self._init_properties()
         self.set_show_border(show_border)
 
-    
     def _init_properties(self):
         """初始化基本属性"""
         self.setFrameShape(QListWidget.NoFrame)
@@ -54,8 +45,3 @@ class XListWidget(QListWidget):
         self.style().unpolish(self)
         self.style().polish(self)
         self.update()
-
-
-
-
-

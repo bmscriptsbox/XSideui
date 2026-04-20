@@ -4,22 +4,15 @@ from ..i18n import XI18N
 
 
 class XMenu(QMenu):
-    """
-    高级自定义菜单组件
-
-    提供圆角菜单样式，支持主题适配和图标集成。
-    继承自 QMenu，提供便捷的菜单项添加和显示方法。
-    支持国际化。
-    """
+    """菜单组件"""
 
     def __init__(self, title: str = "", parent=None):
-        """
-        初始化菜单组件
+        """初始化菜单组件。
 
-        Args:
-            title: 菜单标题
-            parent: 父组件
-        """
+            Args:
+                title: 菜单标题文本。
+                parent: 父级组件。
+            """
         super().__init__(title, parent)
         self.setWindowFlags(
             Qt.Popup |

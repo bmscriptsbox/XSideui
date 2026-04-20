@@ -4,13 +4,23 @@ from ..utils.qt_compat import QWidget, QHBoxLayout, QFrame, QSizePolicy, Qt
 from ..xenum import XColor
 from .label import XLabel
 
+
 class XDivider(QFrame):
     """
-    极简分割线：深度适配 XColor 枚举
+    分割线
     """
 
     def __init__(self, vertical=False, size=1, color: Union[XColor, str] = '', parent=None):
         super().__init__(parent)
+        """初始化分割线组件。
+
+            Args:
+                vertical: 是否为垂直分割线。默认 False（水平分割线）。
+                size: 分割线的粗细（像素）。通常为 1px。
+                color: 分割线颜色。支持 XColor 枚举或十六进制颜色字符串。
+                    若为空，则默认使用主题配置中的边框颜色（Border Color）。
+                parent: 父级组件。
+            """
         self.setObjectName('XDivider')
         self.setProperty('color', color.value if isinstance(color, XColor) else color)
         self.setAttribute(Qt.WA_MacShowFocusRect, True)
@@ -39,10 +49,6 @@ class XDivider(QFrame):
         self.setProperty('color', color)
         self.style().unpolish(self)
         self.style().polish(self)
-
-
-
-
 
 
 class XTextDivider(QWidget):

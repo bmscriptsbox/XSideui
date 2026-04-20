@@ -46,7 +46,7 @@ class XTabWidgetExample(XWidget):
         tab_widget_flat.setIconSize(QSize(16,16))
 
         tab1 = XLabel("这是flat样式Tab第一个标签页的内容")
-        tab_widget_flat.addTab(tab1,  "测试五个")
+        tab_widget_flat.addTab(tab1,  "测试文字的长度")
 
 
         tab2 = XLabel("这是这是flat样式Tab第二个标签页的内容")

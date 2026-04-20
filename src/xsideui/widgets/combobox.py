@@ -8,7 +8,7 @@ from ..i18n import XI18N
 
 
 class XComboBox(QComboBox):
-    """下拉框组件，带有自定义样式，支持国际化"""
+    """下拉框组件"""
 
     def __init__(
             self,
@@ -16,13 +16,14 @@ class XComboBox(QComboBox):
             border_visible: bool = True,
             parent=None
     ):
-        """初始化下拉框
+        """初始化下拉框组件。
 
-        Args:
-            size: 组件尺寸
-            border_visible: 是否显示边框
-            parent: 父组件
-        """
+            Args:
+                size: 组件的尺寸规格。影响输入框高度、字体大小以及下拉箭头的大小。
+                    支持 XSize 枚举或字符串（'small', 'default', 'large'）。
+                border_visible: 是否显示外边框。设为 False 时通常用于表格嵌入或紧凑型 UI。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.setObjectName("xcombobox")
         self._size_value = self._parse_size(size)

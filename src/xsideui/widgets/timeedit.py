@@ -1,5 +1,5 @@
 """
-Time Edit Component 时间编辑框组件
+时间编辑框组件
 """
 
 from typing import Union
@@ -12,15 +12,14 @@ from ..xenum import XSize
 from .xarrowbutton import XArrowButton
 
 class XTimeEdit(QTimeEdit):
-    """Time Edit Component 时间编辑框组件"""
 
     def __init__(self, size: Union[XSize, str] = XSize.DEFAULT, parent=None):
         """
-        Initialize. 初始化。
+        初始化。
 
         Args:
-            size: 组件尺寸 (Component size)
-            parent: 父组件 (Parent widget)
+            size: 组件尺寸
+            parent: 父组件
         """
         super().__init__(parent)
         self.setObjectName("xqtimeedit")

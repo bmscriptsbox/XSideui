@@ -4,8 +4,6 @@ from .divider import XDivider
 from .label import XLabel
 
 
-
-
 class GroupProxy:
     """分组代理类，支持链式调用添加组件到分组"""
 
@@ -81,8 +79,6 @@ class XCardBase(QWidget, LayoutCleanerMixin):
 
     clicked = Signal()
 
-
-
     def __init__(self, parent=None):
         """
         Args:
@@ -144,23 +140,19 @@ class XCardBase(QWidget, LayoutCleanerMixin):
 class XCard(XCardBase):
     """
     基础卡片组件
-
-    简单的容器卡片，支持添加组件和布局，可选择是否可点击。
-
-    Example:
-        >>> card = XCard(clickable=True)
-        >>> card.addWidget(XLabel("内容"))
-        >>> card.clicked.connect(lambda: print("点击"))
     """
 
     def __init__(self, padding=(11, 11, 11, 11), spacing=8, clickable=False, parent=None):
-        """
-        Args:
-            padding: 内边距 (left, top, right, bottom)
-            spacing: 组件间距
-            clickable: 是否可点击
-            parent: 父组件
-        """
+        """初始化布局容器。
+
+            Args:
+                padding: 内边距。采用 (left, top, right, bottom) 格式，
+                    控制内容区域与边缘的留白距离。默认值为 (11, 11, 11, 11)。
+                spacing: 组件间距。控制容器内子组件之间的像素距离。
+                clickable: 是否开启点击交互。若为 True，组件将响应鼠标事件
+                    并通常会显示点击态（如手型光标或背景变色）。
+                parent: 父组件。指定该容器所属的父级 QWidget。
+            """
         super().__init__(parent)
         self._clickable = clickable
         self._layout = self.create_layout(self.container, is_vbox=False, margins=padding, spacing=spacing)
@@ -217,32 +209,27 @@ class XCard(XCardBase):
 class XHeaderCard(XCardBase):
     """
     标题卡片组件
-
-    带标题栏的卡片，分为 HEADER 和 CONTENT 两个区域，
-    支持链式调用添加组件。
-
-    Example:
-        >>> card = XHeaderCard(title="标题")
-        >>> card.addWidget(btn, target=CardPosition.HEADER) \\
-        ...     .addWidget(XLabel("内容"), target=CardPosition.CONTENT)
     """
-
 
     class CardPosition(Enum):
         """卡片目标区域枚举"""
         HEADER = 'header'
         CONTENT = 'content'
         GROUP = 'group'
+
     def __init__(self, title="", header_padding=(11, 11, 11, 11), content_padding=(11, 11, 11, 11), spacing=8,
                  parent=None):
-        """
-        Args:
-            title: 标题文本
-            header_padding: 标题栏内边距
-            content_padding: 内容区内边距
-            spacing: 内容区组件间距
-            parent: 父组件
-        """
+        """初始化带标题栏的容器组件。
+
+            Args:
+                title: 标题文本内容。若为空则可能隐藏标题栏或显示占位。
+                header_padding: 标题栏的内边距 (left, top, right, bottom)。
+                    用于控制标题文字与其背景边缘的距离。
+                content_padding: 内容区域的内边距 (left, top, right, bottom)。
+                    用于控制主体子组件与容器边缘的留白。
+                spacing: 内容区内部组件之间的间距（像素）。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         container_layout = self.create_layout(self.container, is_vbox=True)
 
@@ -309,17 +296,8 @@ class XHeaderCard(XCardBase):
 class XGroupCard(XCardBase):
     """
     分组卡片组件
-
-    支持多个分组的卡片，每个分组间自动添加分隔线。
-    通过 GroupProxy 支持链式调用。
-
-    Example:
-        >>> card = XGroupCard(title="设置")
-        >>> card.add_group() \\
-        ...     .add(XLabel("分组1内容"))
-        >>> card.add_group() \\
-        ...     .add(XLabel("分组2内容"))
     """
+
     class CardPosition(Enum):
         """卡片目标区域枚举"""
         HEADER = 'header'
@@ -328,14 +306,17 @@ class XGroupCard(XCardBase):
 
     def __init__(self, title="", header_padding=(11, 11, 11, 11), group_padding=(11, 11, 11, 11), spacing=8,
                  parent=None):
-        """
-        Args:
-            title: 标题文本
-            header_padding: 标题栏内边距
-            group_padding: 分组内边距
-            spacing: 分组内组件间距
-            parent: 父组件
-        """
+        """初始化分组容器组件。
+
+            Args:
+                title: 分组的标题文本。
+                header_padding: 标题栏的内边距 (left, top, right, bottom)。
+                    用于控制标题文字相对于标题背景区域的缩进。
+                group_padding: 分组内容区域的内边距 (left, top, right, bottom)。
+                    用于控制内部子组件整体相对于容器边框的留白。
+                spacing: 分组内部件之间的间距。控制内容区各子组件的垂直或水平间距。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self._group_padding = group_padding
         self._spacing = spacing

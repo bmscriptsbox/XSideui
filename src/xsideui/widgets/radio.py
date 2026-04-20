@@ -65,12 +65,7 @@ class XRadioButtonCache:
 
 
 class XRadioButton(QRadioButton):
-    """单选按钮组件
-
-    Example:
-        >>> radio = XRadioButton("选项", checked=True)
-        >>> radio.clicked.connect(lambda checked: print(f"Checked: {checked}"))
-    """
+    """单选按钮组件"""
 
     clicked = Signal(bool)
 
@@ -82,6 +77,15 @@ class XRadioButton(QRadioButton):
         color:Union[XColor, str]=XColor.PRIMARY,
         parent=None
     ):
+        """初始化单选按钮。
+
+            Args:
+                text: 按钮显示的标签文本。
+                checked: 初始选中状态。
+                size: 组件尺寸规格。影响圆圈大小和字体间距。
+                color: 选中态的主题颜色。支持 XColor 枚举或十六进制字符串。
+                parent: 父级组件。
+            """
         super().__init__(text, parent)
         self.setObjectName("xradio")
         self.setAttribute(Qt.WA_StyledBackground, True)

@@ -33,26 +33,25 @@ class XImageDemo(XWidget):
         content_layout.addWidget(XDivider())
 
         fit_layout = QHBoxLayout()
-        image1 = XImage(source='./img/wukong.jpeg', lazy=True, fit=XImage.FitMode.NONE, min_height=120)
+        image1 = XImage(source='./img/wukong.jpeg', lazy=True, fit=XImage.FitMode.NONE, min_size=128)
         fit_layout.addWidget(image1)
         content_layout.addLayout(fit_layout)
 
-        image2 = XImage(source='./img/wukong.jpeg', lazy=True, fit=XImage.FitMode.CONTAIN, min_height=120)
+        image2 = XImage(source='./img/wukong.jpeg', lazy=True, fit=XImage.FitMode.CONTAIN, min_size=128)
         fit_layout.addWidget(image2)
         content_layout.addLayout(fit_layout)
 
-        image3 = XImage(source=XIcon.get(name='caihong', size=32).pixmap(), lazy=True, fit=XImage.FitMode.COVER, min_height=32)
-        image3.setFixedSize(32,32)
+        image3 = XImage(source=XIcon.get(name='caihong', size=128).pixmap(), lazy=True, min_size=128)
         fit_layout.addWidget(image3)
         content_layout.addLayout(fit_layout)
 
-        image4 = XImage(source='./img/wukong.jpeg', lazy=True, fit=XImage.FitMode.FILL, min_height=120)
+        image4 = XImage(source='./img/wukong.jpeg', lazy=True, fit=XImage.FitMode.FILL, min_size=128)
         fit_layout.addWidget(image4)
         content_layout.addLayout(fit_layout)
 
         content_layout.addWidget(XLabel('占位图'))
         content_layout.addWidget(XDivider())
-        image5 = XImage(source='', lazy=True, fit=XImage.FitMode.NONE, min_height=120)
+        image5 = XImage(source='', lazy=True, fit=XImage.FitMode.NONE, min_size=120)
         content_layout.addWidget(image5)
 
 

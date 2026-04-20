@@ -67,28 +67,28 @@ class XCheckBoxCache:
 
 
 class XCheckBox(QCheckBox):
-    """复选框组件
-
-    支持国际化，可以通过 text_key 参数设置翻译键。
-
-    Example:
-        >>> checkbox = XCheckBox("选项", checked=True)
-        >>> checkbox.clicked.connect(lambda checked: print(f"Checked: {checked}"))
-
-        >>> # 使用国际化
-        >>> checkbox = XCheckBox(text_key="Checkbox", checked=True)
-    """
+    """复选框组件"""
 
     clicked = Signal(bool)
 
     def __init__(
-        self,
-        text: str = "",
-        checked: bool = False,
-        size: XSize = XSize.DEFAULT,
-        color:Union[XColor, str]=XColor.PRIMARY,
-        parent=None
+            self,
+            text: str = "",
+            checked: bool = False,
+            size: XSize = XSize.DEFAULT,
+            color: Union[XColor, str] = XColor.PRIMARY,
+            parent=None
     ):
+        """初始化复选框组件。
+
+            Args:
+                text: 复选框显示的标签文本。
+                checked: 初始选中状态。默认为 False（未选中）。
+                size: 组件的尺寸规格。影响复选框图标的大小、间距以及字体大小。
+                    通常对应 XSize.SMALL, XSize.DEFAULT, XSize.LARGE 等。
+                color: 选中的主题颜色。支持 XColor 枚举或十六进制颜色字符串。
+                parent: 父级组件。
+            """
         super().__init__(text, parent)
         self.setObjectName("xcheckbox")
         self.setAttribute(Qt.WA_StyledBackground, True)
@@ -114,6 +114,7 @@ class XCheckBox(QCheckBox):
         # 初始化国际化
         if text:
             self.retranslateUi()
+
     def retranslateUi(self):
         """当语言切换或文本更新时调用"""
         if not self._text_key:
@@ -134,6 +135,7 @@ class XCheckBox(QCheckBox):
         """重写 setText，确保外部修改文本时同步更新翻译键"""
         self._text_key = text
         self.retranslateUi()
+
     def _update_size(self):
         """更新控件尺寸和字体"""
         config = self._get_size_config()
@@ -279,7 +281,7 @@ class XCheckBox(QCheckBox):
 
         # 绘制复选框（使用缓存）
         checkbox_key = (self._size, self.isChecked(), self.isEnabled(), self._is_hover,
-                       colors['bg'], colors['border'], colors['check'], dpr)
+                        colors['bg'], colors['border'], colors['check'], dpr)
         pixmap = XCheckBoxCache.get_pixmap(
             checkbox_key,
             lambda: self._create_checkbox_pixmap(config, colors)

@@ -1,8 +1,11 @@
 from typing import List
 
-from ..utils.qt_compat import (Qt, QTabWidget, QTabBar, QEasingCurve, QPropertyAnimation, QRect, QPainter, Property, QColor, QRectF, QEvent)
+from ..utils.qt_compat import (Qt, QTabWidget, QTabBar, QEasingCurve, QPropertyAnimation, QRect, QPainter, Property,
+                               QColor, QRectF, QEvent, QSize)
 from ..theme import theme_manager
 from ..i18n import XI18N
+
+
 class XTabBar(QTabBar):
     """标签栏组件 """
 
@@ -11,6 +14,7 @@ class XTabBar(QTabBar):
         self.setObjectName("xtabbar")
         self.setMinimumHeight(40)
         self.setExpanding(False)
+        self.setTabsClosable(False)
 
         self._ani_rect = QRect()
         self._ani = QPropertyAnimation(self, b"indicatorRect", self)
@@ -28,12 +32,33 @@ class XTabBar(QTabBar):
 
     indicatorRect = Property(QRect, fget=get_indicatorRect, fset=set_indicatorRect)
 
+    def tabSizeHint(self, index: int):
+        size = super().tabSizeHint(index)
+        font_metrics = self.fontMetrics()
+        text = self.tabText(index)
+
+        # 兼容性处理
+        if hasattr(font_metrics, 'horizontalAdvancement'):
+            text_width = font_metrics.horizontalAdvancement(text)
+        else:
+            text_width = font_metrics.width(text)
+
+        # 加上图标宽度（如果有图标的话）
+        icon = self.tabIcon(index)
+        icon_width = self.iconSize().width() + 10 if not icon.isNull() else 0
+
+        # 40 是左右预留的内边距 (Padding)
+        new_width = text_width + icon_width + 40
+
+        # 保持原有的高度，更新宽度
+        size.setWidth(new_width)
+        return size
+
     def showEvent(self, event):
         super().showEvent(event)
         if self.currentIndex() >= 0:
             self._ani_rect = self.tabRect(self.currentIndex())
             self.update()
-
 
     def _on_current_changed(self, index):
         """处理标签切换事件"""
@@ -57,35 +82,25 @@ class XTabBar(QTabBar):
         indicator_color = QColor(theme_manager.colors.primary)
         painter.setBrush(indicator_color)
         painter.setPen(Qt.NoPen)
+
+
         rect = QRectF(self._ani_rect)
-        h = 2
-        first_tab_width = self.tabRect(0).width()
-        if first_tab_width > 0:
-            factor = min(1.0, rect.x() / first_tab_width)
-        else:
-            factor = 1.0
-        current_left_margin = 16 * factor
-        right_margin = 16
+        h = 3
+        padding = 10
+        line_width = max(0.0, rect.width() - 2 * padding)
         line_rect = QRectF(
-            rect.x() + current_left_margin,
+            rect.x() + padding,
             self.height() - h,
-            rect.width() - (current_left_margin + right_margin),
+            line_width,
             h
         )
 
-        painter.drawRoundedRect(line_rect, 1, 1)
-
+        painter.drawRoundedRect(line_rect, 1.5, 1.5)
 
 
 class XTabWidget(QTabWidget):
     """标签页组件
-
     支持平滑的底部指示器动画，自动适配主题切换。
-
-    Example:
-        >>> tab_widget = XTabWidget(parent=parent)
-        >>> tab_widget.addTab(widget1, "标签页1")
-        >>> tab_widget.addTab(widget2, "标签页2")
     """
 
     def __init__(self, parent=None):
@@ -104,6 +119,9 @@ class XTabWidget(QTabWidget):
 
         self.setLayoutDirection(Qt.LeftToRight)
         self.setTabPosition(QTabWidget.North)
+
+        self.tabBar().setExpanding(False)
+        self.setUsesScrollButtons(True)
 
         self.retranslateUi()
 
@@ -156,8 +174,6 @@ class XTabWidget(QTabWidget):
             self._i18n_tab_keys.pop(index)
         super().removeTab(index)
 
-
-
     def retranslateUi(self):
         """当语言切换或文本更新时调用"""
         if not self._i18n_tab_keys:
@@ -168,10 +184,15 @@ class XTabWidget(QTabWidget):
                 translated = XI18N.x_tr(key)
                 super().setTabText(index, translated)
 
+        # 强制让 TabBar 重新计算所有 Tab 的宽度
+        self.tabBar().updateGeometry()
+        # 动画重置到当前选中的位置，防止文字撑开后指示器位置偏离
+        curr = self.currentIndex()
+        if curr >= 0:
+            self._tab_bar.set_indicatorRect(self._tab_bar.tabRect(curr))
+
     def changeEvent(self, event):
         """监听国际化事件"""
         if event.type() == QEvent.LanguageChange:
             self.retranslateUi()
         super().changeEvent(event)
-
-

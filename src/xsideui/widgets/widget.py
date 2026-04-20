@@ -54,6 +54,17 @@ class XWidget(QWidget):
                  show_dark: bool = True,
                  parent=None
                  ):
+        """初始化自定义无边框窗口容器。
+
+            Args:
+                title: 窗口标题。
+                logo: 图标路径或 IconName 枚举。
+                show_min: 是否显示最小化按钮。
+                show_max: 是否显示最大化/还原按钮。
+                show_close: 是否显示关闭按钮。
+                show_dark: 是否支持深色模式切换/适配。
+                parent: 父组件。
+            """
         super().__init__(parent)
         self.is_max = None
         self.setObjectName("xwidget")

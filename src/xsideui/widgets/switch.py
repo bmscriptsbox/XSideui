@@ -278,12 +278,7 @@ class OnlySwitch(QAbstractButton):
 
 
 class XSwitch(QWidget):
-    """带标签的开关组件
-
-    Example:
-        >>> switch = XSwitch("开启", "关闭", checked=True)
-        >>> switch.clicked.connect(lambda checked: print(f"Switch: {checked}"))
-    """
+    """切换组件"""
 
     clicked = Signal(bool)
 
@@ -294,29 +289,70 @@ class XSwitch(QWidget):
             checked: bool = False,
             color: Union[XColor, str] = XColor.PRIMARY,
             size: XSize = XSize.DEFAULT,
+            text_position: str = "right",  # 新增：支持 "left" 或 "right"
             parent=None
     ):
+        """初始化切换组件。
+
+            Args:
+                text_on: 开启状态下的辅助描述（通常用于 Tooltip 或内部绘制）。
+                text_off: 关闭状态下的辅助描述。
+                checked: 初始开关状态。
+                color: 开启状态下的轨道背景颜色。
+                size: 组件尺寸规格。影响开关的高度、宽度以及滑块的直径。
+                text_position: 文字的位置，left / right
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.setObjectName("xswitch")
         self.setAttribute(Qt.WA_StyledBackground, True)
 
         self._text_on_key = text_on
         self._text_off_key = text_off
+        self._text_position = text_position.lower()
 
+        # 初始化内部组件
         self.switch = OnlySwitch(checked=checked, color=color, size=size)
-
         current_key = self._text_on_key if checked else self._text_off_key
         self.label = XLabel(current_key)
 
-        layout = QHBoxLayout(self)
-        layout.addWidget(self.switch)
-        layout.addWidget(self.label)
-        layout.setContentsMargins(0, 0, 0, 0)
-        layout.setSpacing(8)
+        # 布局处理
+        self.main_layout = QHBoxLayout(self)
+        self.main_layout.addWidget(self.switch)
+        self.main_layout.addWidget(self.label)
+        self.main_layout.setContentsMargins(0, 0, 0, 0)
+        self.main_layout.setSpacing(8)
+
+        # 根据位置参数决定添加顺序
+        self._setup_layout()
 
         XI18N.language_changed.connect(self._update_label_text)
         self.switch.clicked.connect(self._on_switch_clicked)
         theme_manager.theme_changed.connect(self._on_theme_changed)
+
+    def _setup_layout(self):
+        """根据文字位置配置布局顺序"""
+        # 先清空布局（用于可能的动态切换位置）
+        while self.main_layout.count():
+            item = self.main_layout.takeAt(0)
+            if item.widget():
+                item.widget().hide()
+
+        if self._text_position == "left":
+            # 文字在左：Label -> Switch
+            self.main_layout.addWidget(self.label)
+            self.main_layout.addWidget(self.switch)
+            # 文字右对齐，靠近开关
+            self.label.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        else:
+            # 文字在右：Switch -> Label (默认)
+            self.main_layout.addWidget(self.switch)
+            self.main_layout.addWidget(self.label)
+            # 文字左对齐
+            self.label.setAlignment(Qt.AlignLeft | Qt.AlignVCenter)
+
+        self.label.show()
+        self.switch.show()
 
     def _update_label_text(self):
         """
@@ -331,6 +367,13 @@ class XSwitch(QWidget):
         """处理开关点击事件"""
         self._update_label_text()
         self.clicked.emit(checked)
+
+    def set_text_position(self, position: str):
+        """动态设置文字位置"""
+        if position.lower() in ["left", "right"]:
+            self._text_position = position.lower()
+            self._setup_layout()
+        return self
 
     def setChecked(self, checked: bool):
         """设置开关状态"""

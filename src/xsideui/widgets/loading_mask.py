@@ -1,30 +1,14 @@
 """
-Loading Mask Component 加载遮罩组件
-一个半透明的遮罩层，中间显示旋转的加载动画和文字。
+加载遮罩组件
 
-性能优化：
-- 使用 QTimer + QPainter 实现流畅的圆弧旋转动画
-- 每帧重新绘制，保证动画平滑度
-- 自动适配主题颜色
 """
 from ..utils.qt_compat import QFrame, QVBoxLayout, QLabel, QPainter, QColor, QPen, QPixmap, QTimer, Qt, QEvent
 from ..theme import theme_manager
 from .label import XLabel
 
+
 class XLoadingMask(QFrame):
-    """加载遮罩组件
-    
-    一个半透明的遮罩层，中间显示旋转的加载动画和文字。
-    支持自定义图标大小、文字间距和动画速度。
-    
-    Features:
-        - 半透明遮罩
-        - 旋转加载动画（60fps）
-        - 可配置文字
-        - 可配置动画速度
-        - 自动适配父组件大小
-        - 主题颜色适配
-    """
+    """加载遮罩组件"""
 
     def __init__(
             self,
@@ -34,15 +18,15 @@ class XLoadingMask(QFrame):
             speed: str = "fast",
             parent=None
     ):
-        """初始化加载遮罩
-        
-        Args:
-            text: 加载文字
-            icon_size: 图标大小（像素）
-            spacing: 图标和文字间距（像素）
-            speed: 动画速度（slow/medium/fast）
-            parent: 父组件
-        """
+        """初始化加载遮罩组件。
+
+            Args:
+                text: 加载提示文本。若为空则只显示加载动画。
+                icon_size: 旋转加载图标的尺寸（像素）。
+                spacing: 旋转图标与下方文字之间的垂直间距。
+                speed: 动画旋转速度。支持 'slow' (1s/r), 'medium' (0.8s/r), 'fast' (0.5s/r)。
+                parent: 遮罩附着的父组件。遮罩将自动覆盖该组件的整个区域。
+            """
         super().__init__(parent)
         self.setObjectName("xloadingmask")
 
@@ -54,9 +38,9 @@ class XLoadingMask(QFrame):
 
         # 速度映射：每帧旋转的角度
         speed_map = {
-            "slow": 3,      # 慢速：每帧旋转 3 度
-            "medium": 5,    # 中速：每帧旋转 5 度
-            "fast": 8       # 快速：每帧旋转 8 度
+            "slow": 3,  # 慢速：每帧旋转 3 度
+            "medium": 5,  # 中速：每帧旋转 5 度
+            "fast": 8  # 快速：每帧旋转 8 度
         }
         self._step = speed_map.get(self._speed, 5)
 

@@ -14,14 +14,15 @@ from xsideui import XSwitch
 
 ## 参数
 
-| 参数 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `text_on` | str | "On" | 开关开启时显示的文本 |
-| `text_off` | str | "Off" | 开关关闭时显示的文本 |
-| `checked` | bool | False | 是否开启 |
-| `color` | XColor 或 str | XColor.PRIMARY | 开关颜色 |
-| `size` | XSize  | XSize.DEFAULT | 开关尺寸 |
-| `parent` | QWidget | None | 父组件 |
+| 参数 | 类型           | 默认值 | 说明                |
+|------|--------------|--------|-------------------|
+| `text_on` | str          | "On" | 开关开启时显示的文本        |
+| `text_off` | str          | "Off" | 开关关闭时显示的文本        |
+| `checked` | bool         | False | 是否开启              |
+| `color` | XColor 或 str | XColor.PRIMARY | 开关颜色              |
+| `size` | XSize        | XSize.DEFAULT | 开关尺寸              |
+| `text_position` | str          | right | 文字位置 right / left |
+| `parent` | QWidget      | None | 父组件               |
 
 ## 尺寸
 

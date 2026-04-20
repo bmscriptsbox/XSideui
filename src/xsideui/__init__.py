@@ -56,7 +56,7 @@ __all__ = [
     'XNavTree',
     'XCarousel',
     'XTextBadge',
-    'XDotBadge',
+    XIconBadge,
     'XUpload',
     'XCollapse',
     'XCollapseGroup',

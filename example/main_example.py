@@ -14,8 +14,8 @@ from src.xsideui import XWidget, XLabel, XPushButton, XColor, XButtonVariant, Ic
     XPushButtonDropdown, XSwitch, XRadioButton, XCheckBox, XHeaderCard, XLineEdit, XIcon, XDateEdit, XDateTimeEdit, \
     XTimeEdit, XComboBox, XTextEdit, XCodeBlock, XCarousel, XTableWidget, XLoadingMask, XPagination, XSpinBox, \
     XDoubleSpinBox, XSlider, XProgressBar, XCircleProgress, XNotif, XMessageBox, XSize, XMenu, XPopover, \
-    XTextBadge, XIconBadge, XTabWidget, XUpload, XListWidget, XNavSimple, XI18N, XScrollArea
-from xsideui.utils.qt_compat import exec_app
+    XTextBadge, XIconBadge, XTabWidget, XUpload, XListWidget, XNavSimple, XI18N, XScrollArea, tr
+from src.xsideui.utils.qt_compat import exec_app
 
 
 class XSideUiDemo(XWidget):
@@ -24,16 +24,12 @@ class XSideUiDemo(XWidget):
         self.timer = QTimer(self)
         self._init_ui()
 
-    def tr(self, text):
-        """用于标识需要国际化的文字"""
-        # pyside2-lupdate demo.py -ts zh_CN.ts
-        # 标识过的文字可用该命令生成ts文件
-        return text
+
 
     def _init_ui(self):
         self.set_title('XSideUi样式示例')
         self.set_logo(r'..\resources\logo.png')
-        self.resize(1000,800)
+        self.resize(1000,600)
         # 标题栏增加语言切换按钮
         btn_translation = XPushButton(icon=IconName.TRANSLATE, variant=XButtonVariant.TEXT, size=XSize.SMALL, color=XColor.SECONDARY)
         btn_translation.clicked.connect(self._on_translation)
@@ -72,14 +68,14 @@ class XSideUiDemo(XWidget):
         self.content_layout.addWidget(self.navbar, 0)
 
         # 添加导航项
-        self.navbar.add_item("home", icon_name=IconName.HOME, text=self.tr("Home"))
-        self.navbar.add_item("dashboard", icon_name=IconName.DASHBOARD, text=self.tr("Dashboard"))
-        self.navbar.add_item("ai", icon_name=IconName.SYSTEM, text=self.tr("Ai"))
-        self.navbar.add_item("chart", icon_name=IconName.CHART, text=self.tr("Statistics"))
-        self.navbar.add_item("settings", icon_name=IconName.SETTING, text=self.tr("Settings"))
+        self.navbar.add_item("home", icon_name=IconName.HOME, text=tr("Home"))
+        self.navbar.add_item("dashboard", icon_name=IconName.DASHBOARD, text=tr("Dashboard"))
+        self.navbar.add_item("ai", icon_name=IconName.SYSTEM, text=tr("Ai"))
+        self.navbar.add_item("chart", icon_name=IconName.CHART, text=tr("Statistics"))
+        self.navbar.add_item("settings", icon_name=IconName.SETTING, text=tr("Settings"))
 
-        self.navbar.add_item("user", icon_name=IconName.USER, text=self.tr('User'), position='bottom')
-        self.navbar.add_item("logout", icon_name=IconName.LOGOUT, text=self.tr('Exit'), position='bottom')
+        self.navbar.add_item("user", icon_name=IconName.USER, text=tr('User'), position='bottom')
+        self.navbar.add_item("logout", icon_name=IconName.LOGOUT, text=tr('Exit'), position='bottom')
     def _init_layout(self):
         self._banner_layout()
         self._theme_button_layout()
@@ -103,14 +99,14 @@ class XSideUiDemo(XWidget):
 
     def _theme_button_layout(self):
         """主题颜色演示"""
-        theme_card = XHeaderCard(self.tr('Theme color'))
+        theme_card = XHeaderCard(tr('Theme color'))
         theme_layout = QHBoxLayout()
-        theme_layout.addWidget(XPushButton(self.tr('Primary'),color=XColor.PRIMARY))
-        theme_layout.addWidget(XPushButton(self.tr('Success'),color=XColor.SUCCESS, variant=XButtonVariant.SOLID))
-        theme_layout.addWidget(XPushButton(self.tr('Warning'),color=XColor.WARNING, variant=XButtonVariant.SOLID))
-        theme_layout.addWidget(XPushButton(self.tr('Danger'),color=XColor.DANGER, variant=XButtonVariant.SOLID))
-        theme_layout.addWidget(XPushButton(self.tr('Secondary'),color=XColor.SECONDARY, variant=XButtonVariant.SOLID))
-        theme_layout.addWidget(XPushButton(self.tr('Tertiary'),color=XColor.TERTIARY, variant=XButtonVariant.SOLID))
+        theme_layout.addWidget(XPushButton(tr('Primary'),color=XColor.PRIMARY))
+        theme_layout.addWidget(XPushButton(tr('Success'),color=XColor.SUCCESS, variant=XButtonVariant.SOLID))
+        theme_layout.addWidget(XPushButton(tr('Warning'),color=XColor.WARNING, variant=XButtonVariant.SOLID))
+        theme_layout.addWidget(XPushButton(tr('Danger'),color=XColor.DANGER, variant=XButtonVariant.SOLID))
+        theme_layout.addWidget(XPushButton(tr('Secondary'),color=XColor.SECONDARY, variant=XButtonVariant.SOLID))
+        theme_layout.addWidget(XPushButton(tr('Tertiary'),color=XColor.TERTIARY, variant=XButtonVariant.SOLID))
 
         theme_layout.addStretch()
         theme_card.addLayout(theme_layout)
@@ -118,7 +114,7 @@ class XSideUiDemo(XWidget):
 
     def _button_layout(self):
         """按钮演示"""
-        button_card = XHeaderCard(self.tr('Button style'))
+        button_card = XHeaderCard(tr('Button style'))
         card_layout = QVBoxLayout()
         button_layout = QHBoxLayout()
         button_layout2 = QHBoxLayout()
@@ -135,27 +131,27 @@ class XSideUiDemo(XWidget):
         button_layout.addWidget(XPushButton(icon=IconName.CLOSE,color=XColor.DANGER))
         button_layout.addStretch()
 
-        btn_loading = XPushButton(self.tr('Loading'))
+        btn_loading = XPushButton(tr('Loading'))
         btn_loading.set_loading(True)
         button_layout2.addWidget(btn_loading)
 
         group_btn1 = XPushButtonGroup(spacing=1,vertical=False)
-        fist_btn = XPushButton(self.tr('Last page'),icon=IconName.LEFT_ARROW)
-        right_btn = XPushButton(self.tr('Next page'),icon=IconName.RIGHT_ARROW).set_icon_position('right')
+        fist_btn = XPushButton(tr('Last page'),icon=IconName.LEFT_ARROW)
+        right_btn = XPushButton(tr('Next page'),icon=IconName.RIGHT_ARROW).set_icon_position('right')
         group_btn1.add_button(fist_btn)
         group_btn1.add_button(right_btn)
         button_layout2.addWidget(group_btn1)
 
         items = [
-            {"text": self.tr("Test"), "value": "center"},
-            {"text": self.tr("Test"), "value": "top_right"},
-            {"text": self.tr("Test"), "value": "top_left"},
-            {"text": self.tr("Test"), "value": "bottom_right"},
-            {"text": self.tr("Test"), "value": "bottom_left"},
+            {"text": tr("Test"), "value": "center"},
+            {"text": tr("Test"), "value": "top_right"},
+            {"text": tr("Test"), "value": "top_left"},
+            {"text": tr("Test"), "value": "bottom_right"},
+            {"text": tr("Test"), "value": "bottom_left"},
         ]
 
         dropdown = XPushButtonDropdown(
-            text=self.tr('Operation'),
+            text=tr('Operation'),
             menu_items=items,  # 传入数据
             variant=XButtonVariant.SOLID,
             color=XColor.PRIMARY,
@@ -168,7 +164,7 @@ class XSideUiDemo(XWidget):
 
     def _notif_layout(self):
         """通知/窗口/气泡/菜单"""
-        notif_card = XHeaderCard(self.tr('Notice/Window/Popover/Menu'))
+        notif_card = XHeaderCard(tr('Notice/Window/Popover/Menu'))
         card_layout = QVBoxLayout()
         notif_layout = QHBoxLayout()
         menu_layout =QHBoxLayout()
@@ -176,32 +172,32 @@ class XSideUiDemo(XWidget):
         card_layout.addLayout(notif_layout)
         card_layout.addLayout(menu_layout)
 
-        btn_notif = XPushButton(text=self.tr('General Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED)
-        btn_notif.clicked.connect(lambda :XNotif.info(self.tr('General Notice'),animated=True, position=XNotif.Pos.BOTTOM_RIGHT, parent=self))
+        btn_notif = XPushButton(text=tr('General Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED)
+        btn_notif.clicked.connect(lambda :XNotif.info(tr('General Notice'),animated=True, position=XNotif.Pos.BOTTOM_RIGHT, parent=self))
         notif_layout.addWidget(btn_notif)
 
-        btn_notif_success= XPushButton(text=self.tr('Success Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED, color=XColor.SUCCESS)
-        btn_notif_success.clicked.connect(lambda :XNotif.success(self.tr('Success Notice'),animated=True, position=XNotif.Pos.TOP_RIGHT, parent=self))
+        btn_notif_success= XPushButton(text=tr('Success Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED, color=XColor.SUCCESS)
+        btn_notif_success.clicked.connect(lambda :XNotif.success(tr('Success Notice'),animated=True, position=XNotif.Pos.TOP_RIGHT, parent=self))
         notif_layout.addWidget(btn_notif_success)
 
-        btn_notif_error= XPushButton(text=self.tr('Error Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED, color=XColor.DANGER)
-        btn_notif_error.clicked.connect(lambda :XNotif.error(self.tr('Error Notice'),animated=True, position=XNotif.Pos.CENTER, parent=self))
+        btn_notif_error= XPushButton(text=tr('Error Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED, color=XColor.DANGER)
+        btn_notif_error.clicked.connect(lambda :XNotif.error(tr('Error Notice'),animated=True, position=XNotif.Pos.CENTER, parent=self))
         notif_layout.addWidget(btn_notif_error)
 
-        btn_notif_warning= XPushButton(text=self.tr('Warning Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED, color=XColor.WARNING)
-        btn_notif_warning.clicked.connect(lambda :XNotif.warning(self.tr('Warning Notice'),animated=True, position=XNotif.Pos.BOTTOM_LEFT, parent=self))
+        btn_notif_warning= XPushButton(text=tr('Warning Notice'),icon=IconName.MESSAGE, variant=XButtonVariant.OUTLINED, color=XColor.WARNING)
+        btn_notif_warning.clicked.connect(lambda :XNotif.warning(tr('Warning Notice'),animated=True, position=XNotif.Pos.BOTTOM_LEFT, parent=self))
         notif_layout.addWidget(btn_notif_warning)
 
 
-        btn_info = XPushButton(self.tr('Information Dialog'),icon=IconName.COMMENT, color=XColor.SUCCESS)
+        btn_info = XPushButton(tr('Information Dialog'),icon=IconName.COMMENT, color=XColor.SUCCESS)
         menu_layout.addWidget(btn_info)
-        btn_info.clicked.connect(lambda :XMessageBox.information(self, self.tr('Information'), self.tr('Information Dialog')))
+        btn_info.clicked.connect(lambda :XMessageBox.information(self, tr('Information'), tr('Information Dialog')))
 
-        btn_ask = XPushButton(self.tr('Ask Dialog'),icon=IconName.COMMENT, color=XColor.SUCCESS)
+        btn_ask = XPushButton(tr('Ask Dialog'),icon=IconName.COMMENT, color=XColor.SUCCESS)
         menu_layout.addWidget(btn_ask)
-        btn_ask.clicked.connect(lambda :XMessageBox.ask(self, self.tr('Ask'), self.tr('Ask Dialog')))
+        btn_ask.clicked.connect(lambda :XMessageBox.ask(self, tr('Ask'), tr('Ask Dialog')))
 
-        btn_form = XPushButton(self.tr('Form Dialog'),icon=IconName.COMMENT, color=XColor.SUCCESS)
+        btn_form = XPushButton(tr('Form Dialog'),icon=IconName.COMMENT, color=XColor.SUCCESS)
         btn_form.clicked.connect(lambda :_form())
         menu_layout.addWidget(btn_form)
 
@@ -209,16 +205,16 @@ class XSideUiDemo(XWidget):
             form_layout = QFormLayout()
             form_layout.setSpacing(10)
 
-            name_input = XLineEdit(size=XSize.SMALL, placeholder=self.tr("Input username"))
-            email_input = XLineEdit(size=XSize.SMALL, placeholder=self.tr("Input email"))
+            name_input = XLineEdit(size=XSize.SMALL, placeholder=tr("Input username"))
+            email_input = XLineEdit(size=XSize.SMALL, placeholder=tr("Input email"))
 
-            form_layout.addRow(XLabel(self.tr('User:')), name_input)
-            form_layout.addRow(XLabel(self.tr('Email:')), email_input)
+            form_layout.addRow(XLabel(tr('User:')), name_input)
+            form_layout.addRow(XLabel(tr('Email:')), email_input)
 
             def on_confirm(msg_box):
                 print(f"姓名: {name_input.text()}, 邮箱: {email_input.text()}")
 
-            XMessageBox.information(self, self.tr('Form Dialog'), self.tr('Please fill out the form below'), layout=form_layout, on_confirm=on_confirm)
+            XMessageBox.information(self, tr('Form Dialog'), tr('Please fill out the form below'), layout=form_layout, on_confirm=on_confirm)
 
         btn_menu = XPushButton('点击弹出菜单',icon=IconName.LIST, color=XColor.PRIMARY)
         menu_layout.addWidget(btn_menu)
@@ -226,24 +222,24 @@ class XSideUiDemo(XWidget):
 
         def _show_menu():
             """Show basic menu 显示基本菜单"""
-            menu = XMenu(self.tr("Menu"), self)
+            menu = XMenu(tr("Menu"), self)
 
-            menu.add_action(self.tr("New"), icon=XIcon(IconName.FILE_ADD).icon(), triggered=lambda: print('点击了新建'))
-            menu.add_action(self.tr("Open"), icon=XIcon(IconName.FOLDER_ADD).icon(), triggered=lambda: print('点击了打开'))
-            menu.add_action(self.tr("Save"), icon=XIcon(IconName.SAVE).icon(), shortcut='ctrl+s',
+            menu.add_action(tr("New"), icon=XIcon(IconName.FILE_ADD).icon(), triggered=lambda: print('点击了新建'))
+            menu.add_action(tr("Open"), icon=XIcon(IconName.FOLDER_ADD).icon(), triggered=lambda: print('点击了打开'))
+            menu.add_action(tr("Save"), icon=XIcon(IconName.SAVE).icon(), shortcut='ctrl+s',
                             triggered=lambda: print('点击了保存'))
             menu.addSeparator()
-            menu.add_action(self.tr("Export"), icon=XIcon(IconName.EXPORT).icon(), triggered=lambda: print('点击了导出'))
-            menu.add_action(self.tr("Download"), icon=XIcon(IconName.DOWNLOAD).icon(), triggered=lambda: print('点击了下载'))
-            menu.add_action(self.tr("Delete"), icon=XIcon(IconName.DELETE, color=XColor.DANGER).icon(),
+            menu.add_action(tr("Export"), icon=XIcon(IconName.EXPORT).icon(), triggered=lambda: print('点击了导出'))
+            menu.add_action(tr("Download"), icon=XIcon(IconName.DOWNLOAD).icon(), triggered=lambda: print('点击了下载'))
+            menu.add_action(tr("Delete"), icon=XIcon(IconName.DELETE, color=XColor.DANGER).icon(),
                             triggered=lambda: print('点击了删除'))
-            more_menu = menu.add_submenu(self.tr("More"), icon=XIcon(IconName.MORE).icon())
-            more_menu.add_action(self.tr('Share'), icon=XIcon(IconName.SHARE).icon())
-            more_menu.add_action(self.tr('Test'), icon=XIcon(IconName.EDIT).icon())
+            more_menu = menu.add_submenu(tr("More"), icon=XIcon(IconName.MORE).icon())
+            more_menu.add_action(tr('Share'), icon=XIcon(IconName.SHARE).icon())
+            more_menu.add_action(tr('Test'), icon=XIcon(IconName.EDIT).icon())
 
             menu.exec_at_widget(btn_menu)
-        btn_popover = XPushButton(self.tr('Popover'),icon=IconName.MESSAGE,variant=XButtonVariant.FILLED, color=XColor.PRIMARY)
-        XPopover.show_popover(btn_popover, self.tr('Bubble hover trigger; displayed at the top of the parent component'), placement=XPopover.Placement.TOP)
+        btn_popover = XPushButton(tr('Popover'),icon=IconName.MESSAGE,variant=XButtonVariant.FILLED, color=XColor.PRIMARY)
+        XPopover.show_popover(btn_popover, tr('Bubble hover trigger; displayed at the top of the parent component'), placement=XPopover.Placement.TOP)
         menu_layout.addWidget(btn_popover)
 
         notif_layout.addStretch()
@@ -253,17 +249,17 @@ class XSideUiDemo(XWidget):
 
     def _badge_layout(self):
         """徽章 / 图标"""
-        badge_card = XHeaderCard(self.tr('Badge'))
+        badge_card = XHeaderCard(tr('Badge'))
         badge_layout = QHBoxLayout()
         badge_layout.setSpacing(20)
-        texts = ["1", "99", self.tr("Hot"),self.tr('Sale'), self.tr('Free')]
+        texts = ["1", "99", tr("Hot"),tr('Sale'), tr('Free')]
         self.text_buttons = []
         for text in texts:
             btn = XPushButton(text)
             self.text_buttons.append(btn)
             badge_layout.addWidget(btn)
 
-        self.dot_btn = XPushButton(text=self.tr('Messages'), variant=XButtonVariant.SOLID, color=XColor.SECONDARY)
+        self.dot_btn = XPushButton(text=tr('Messages'), variant=XButtonVariant.SOLID, color=XColor.SECONDARY)
         badge_layout.addWidget(self.dot_btn)
 
 
@@ -276,7 +272,7 @@ class XSideUiDemo(XWidget):
 
     def _create_badges(self):
         """创建徽章"""
-        texts = ["1", "99", self.tr("Hot"), self.tr('Sale'), self.tr('Free')]
+        texts = ["1", "99", tr("Hot"), tr('Sale'), tr('Free')]
         for count, btn in enumerate(self.text_buttons):
             XTextBadge(btn, texts[count], color=XColor.DANGER)
 
@@ -291,12 +287,12 @@ class XSideUiDemo(XWidget):
         tab1 = QWidget()
         tab1_layout = QVBoxLayout()
         tab1.setLayout(tab1_layout)
-        tab_widget_capsule.addTab(tab1,  self.tr("Upload"))
+        tab_widget_capsule.addTab(tab1,  tr("Upload"))
         upload = XUpload(
             mode=XUpload.MODE_BOTH,
             mini_height=200,
-            title=self.tr('Drag and drop files into this area or click the upload button'),
-            description=self.tr('Supports file restrictions, size limits, and more'),
+            title=tr('Drag and drop files into this area or click the upload button'),
+            description=tr('Supports file restrictions, size limits, and more'),
         )
         tab1_layout.addWidget(upload)
         self.left_layout.addWidget(tab_widget_capsule)
@@ -304,10 +300,10 @@ class XSideUiDemo(XWidget):
         tab2 = QWidget()
         tab2_layout = QVBoxLayout()
         tab2.setLayout(tab2_layout)
-        tab_widget_capsule.addTab(tab2, self.tr("Tabel"))
+        tab_widget_capsule.addTab(tab2, tr("Tabel"))
         self.table = XTableWidget(style=XTableWidget.Style.STRIPED)
         tab2_layout.addWidget(self.table)
-        self.table.set_headers([self.tr('Name'), self.tr('Age'), self.tr('Job')])
+        self.table.set_headers([tr('Name'), tr('Age'), tr('Job')])
         self.table.set_column_widths([100,100,-1])
 
         self.pagination = XPagination(total=500, page_size=30, current_page=1)
@@ -321,7 +317,7 @@ class XSideUiDemo(XWidget):
         tab3 = QWidget()
         tab3_layout = QVBoxLayout()
         tab3.setLayout(tab3_layout)
-        tab_widget_capsule.addTab(tab3, self.tr("List"))
+        tab_widget_capsule.addTab(tab3, tr("List"))
         default_list = XListWidget()
         default_list.addItems([
             "选项 1：默认列表项",
@@ -339,7 +335,7 @@ class XSideUiDemo(XWidget):
         tab3_layout.addWidget(default_list)
 
     def _loading_mask(self):
-        self.loading = XLoadingMask.show_loading(self.table, text=self.tr("Loading"))
+        self.loading = XLoadingMask.show_loading(self.table, text=tr("Loading"))
         self._add_table_bata()
         QTimer.singleShot(3000, lambda :self.loading.hide())
 
@@ -363,20 +359,20 @@ class XSideUiDemo(XWidget):
 
     def _check_layout(self):
         """选择器演示"""
-        check_card = XHeaderCard(self.tr('Selector'))
+        check_card = XHeaderCard(tr('Selector'))
         check_layout = QHBoxLayout()
-        switch = XSwitch(checked=False,color=XColor.PRIMARY,text_on=self.tr('On'), text_off=self.tr('Off'))
+        switch = XSwitch(checked=False,color=XColor.PRIMARY,text_on=tr('On'), text_off=tr('Off'))
         check_layout.addWidget(switch)
         switch.setChecked(True)
-        check_layout.addWidget(XRadioButton(self.tr("Check"), color=XColor.PRIMARY,checked=False))
-        check_layout.addWidget(XCheckBox(color=XColor.PRIMARY,text=self.tr("Check"), checked=False))
+        check_layout.addWidget(XRadioButton(tr("Check"), color=XColor.PRIMARY,checked=False))
+        check_layout.addWidget(XCheckBox(color=XColor.PRIMARY,text=tr("Check"), checked=False))
         check_layout.addStretch()
         check_card.addLayout(check_layout)
         self.right_layout.addWidget(check_card)
 
     def _progressbar_layout(self):
         """滑块 / 进度条"""
-        progressbar_card = XHeaderCard(self.tr('Slider/ Progress'))
+        progressbar_card = XHeaderCard(tr('Slider/ Progress'))
         progressbar_layout = QVBoxLayout()
         progressbar_layout.addWidget(XSlider(value=20, minimum=0, maximum=100))
 
@@ -410,10 +406,10 @@ class XSideUiDemo(XWidget):
 
     def _input_layout(self):
         """输入框样式"""
-        input_card = XHeaderCard(self.tr('Input'))
+        input_card = XHeaderCard(tr('Input'))
         input_layout = QVBoxLayout()
-        input_layout.addWidget(XLineEdit(placeholder=self.tr("Input username"),prefix_icon=IconName.USER))
-        input_layout.addWidget(XLineEdit(placeholder=self.tr("Input password"), show_password=True))
+        input_layout.addWidget(XLineEdit(placeholder=tr("Input username"),prefix_icon=IconName.USER))
+        input_layout.addWidget(XLineEdit(placeholder=tr("Input password"), show_password=True))
 
         input_layout.addWidget(XDateEdit())
         input_layout.addWidget(XTimeEdit())
@@ -422,7 +418,7 @@ class XSideUiDemo(XWidget):
         input_layout.addWidget(XDoubleSpinBox())
 
         combox = XComboBox()
-        combox.addItems([self.tr('Hamburg'),self.tr('French fries'),self.tr('Fried chicken'),self.tr('Coca-Cola') ])
+        combox.addItems([tr('Hamburg'),tr('French fries'),tr('Fried chicken'),tr('Coca-Cola') ])
         input_layout.addWidget(combox)
 
         text_edit = XTextEdit(

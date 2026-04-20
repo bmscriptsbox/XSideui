@@ -5,7 +5,7 @@ from ..theme import theme_manager
 
 
 class XArrowButton(QPushButton):
-    """Custom arrow button 自定义箭头按钮"""
+    """自定义箭头按钮"""
 
     def __init__(self, icon_name, parent=None):
         super().__init__(parent)

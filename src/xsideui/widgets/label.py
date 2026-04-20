@@ -73,6 +73,24 @@ class XLabel(QLabel):
             theme: Theme = None,
             parent=None
     ):
+        """初始化文本标签组件。
+
+            Args:
+                text: 显示的文本内容。
+                style: 预设样式（如 H1, H2, Body, Caption 等）。
+                color: 文本颜色。支持 XColor 枚举或十六进制字符串。
+                size: 字体大小（像素）。
+                weight: 字体粗细（如 QFont.Bold 或数值 50-900）。
+                letter_spacing: 字符间距（像素）。默认 0.3px 以提升易读性。
+                underline: 是否启用下划线。
+                strike_out: 是否启用删除线。
+                elide_mode: 是否启用省略模式。若为 True，当宽度不足时文本末尾显示 "..."。
+                alignment: 文本对齐方式。默认左对齐且垂直居中。
+                selectable: 是否允许用户鼠标拖拽选中文字并复制。
+                word_wrap: 是否允许自动换行。
+                theme: 显式指定的主题对象。若为 None 则跟随系统全局主题。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self._full_text = text
         self._theme = theme or theme_manager

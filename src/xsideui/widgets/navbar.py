@@ -228,13 +228,13 @@ class XNavSimple(QWidget):
     """
     changed = Signal(str)
 
-    def __init__(self, icon_size=22, parent=None):
-        """初始化导航栏
+    def __init__(self, icon_size=18, parent=None):
+        """初始化简单导航栏组件。
 
-        Args:
-            icon_size: 导航项图标尺寸（像素）
-            parent: 父组件
-        """
+            Args:
+                icon_size: 导航项图标的显示尺寸（像素）。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self.icon_size = icon_size
         self._items = {}

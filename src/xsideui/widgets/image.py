@@ -2,13 +2,14 @@
 from enum import Enum
 from typing import Optional, Union
 
-from .. import XIcon
-from ..utils.qt_compat import QFrame, QAction, QFileDialog, QApplication, QPixmap, QPainter, QColor, QImage, QPainterPath, Qt, Signal, QTimer, QRectF, QVariantAnimation
+
+from ..utils.qt_compat import QFrame, QAction, QFileDialog, QApplication, QPixmap, QPainter, QSize, QImage, QPainterPath, Qt, Signal, QTimer, QRectF, QVariantAnimation
 
 from .menu import XMenu
 from ..theme import theme_manager
 from ..icon import IconName
 from ..xenum import XColor
+from .. import XIcon
 
 
 class XImage(QFrame):
@@ -30,16 +31,35 @@ class XImage(QFrame):
         source: Union[str, QPixmap, QImage, bytes] = "",
         fit: Union['XImage.FitMode', str] = FitMode.CONTAIN,
         alt: str = "",
-        min_height: int = 60,
-        lazy: bool = True,
+        min_size: int = 32,
+        lazy: bool = False,
         parent=None
     ):
+        """
+            初始化图片组件。
+
+            Args:
+                source: 图片资源。支持多种格式：
+                    - str: 本地文件路径或 Base64 编码字符串。
+                    - QPixmap / QImage: 直接传入 Qt 图像对象。
+                    - bytes: 图片的二进制数据。
+                fit: 图片缩放适配模式。
+                    - 'contain': 保持比例，缩放至完全装入容器（默认）。
+                    - 'cover': 保持比例，缩放至填满容器（可能被裁剪）。
+                    - 'fill': 不顾比例，拉伸填满。
+                    - 'none': 居中原始尺寸显示。
+                alt: 备用文本。当图片加载失败或无法显示时，用于辅助说明。
+                min_size: 组件的最小尺寸限制（像素）。
+                    由于该值同时影响最小宽度和高度，建议用于控制组件的最小占位。
+                lazy: 是否开启懒加载。开启后，仅当组件滚动到可视区域时才执行图片解码和加载逻辑。
+                parent: 父级窗口或布局容器。
+            """
         super().__init__(parent)
 
         self.setObjectName("ximage")
         self.setAttribute(Qt.WA_StyledBackground, True)
         self.setCursor(Qt.PointingHandCursor)
-        self.setMinimumHeight(min_height)
+        self.setMinimumSize(min_size, min_size)
 
         self._source = source
         self._fit = self._parse_fit(fit)
@@ -258,6 +278,8 @@ class XImage(QFrame):
         self._update_scaled_pixmap()
         self.loaded.emit()
 
+        self.updateGeometry()
+
         self._anim = QVariantAnimation(self)
         self._anim.setDuration(300)
         self._anim.setStartValue(0.0)
@@ -320,6 +342,35 @@ class XImage(QFrame):
         )
         self._scaled_pixmap.setDevicePixelRatio(dpr)
         self.update()
+
+    # def sizeHint(self):
+    #     """返回基于用户设定最小高度的建议尺寸"""
+    #     # 基础高度：优先使用用户设置的 minimumHeight，否则用默认值
+    #     h = self.minimumHeight() if self.minimumHeight() > 0 else 64
+    #
+    #     if self._original_pixmap and not self._original_pixmap.isNull():
+    #         # 根据图片比例计算建议宽度
+    #         ratio = self._original_pixmap.width() / self._original_pixmap.height()
+    #         return QSize(int(h * ratio), h)
+    #
+    #     # 没有图片时，默认返回一个正方形
+    #     return QSize(h, h)
+
+    # def minimumSizeHint(self):
+    #     """返回最小推荐尺寸"""
+    #     # 如果图片已加载，返回图片尺寸
+    #     if self._original_pixmap:
+    #         return self._original_pixmap.size()
+    #
+    #     # 返回最小尺寸
+    #     min_w = self.minimumWidth()
+    #     min_h = self.minimumHeight()
+    #     if min_w > 0 and min_h > 0:
+    #         return QSize(min_w, min_h)
+    #
+    #     return QSize(60, 60)  # 默认最小尺寸
+
+
 
     def paintEvent(self, event):
         """绘制事件"""
@@ -444,6 +495,8 @@ class XImage(QFrame):
         super().resizeEvent(event)
         self._resize_timer.start(100)
 
+
+
     def closeEvent(self, event):
         """关闭事件"""
         if self._check_timer:
@@ -471,6 +524,8 @@ class XImage(QFrame):
             self.load_image()
         else:
             self._show_placeholder()
+
+        self.updateGeometry()
 
     def set_fit(self, fit: Union['XImage.FitMode', str]):
         """设置适应模式"""

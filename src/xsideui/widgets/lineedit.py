@@ -1,4 +1,4 @@
-"""Line Edit Component 输入框组件"""
+
 from typing import Union
 from ..utils.qt_compat import (QLineEdit, QAction, Signal, QIcon, Qt, QEvent)
 from ..icon import XIcon, IconName
@@ -8,10 +8,7 @@ from ..i18n import XI18N
 
 
 class XLineEdit(QLineEdit):
-    """Line Edit Component 输入框组件
-    
-    A customizable input component with icons and various states.
-    """
+    """输入框组件"""
 
     iconClicked = Signal(str)
 
@@ -26,19 +23,19 @@ class XLineEdit(QLineEdit):
             status: Union[XInputStatus, str] = None,
             parent=None
     ):
-        """Initialize line edit.
-        初始化输入框。
+        """初始化输入框组件。
 
-        Args:
-            placeholder: Placeholder text 占位文本
-            size: Input size 输入框大小
-            clearable: Whether to show clear button 是否显示清空按钮
-            show_password: Whether to show password toggle 是否显示密码切换
-            prefix_icon: Prefix icon name or IconName enum 前缀图标名称或枚举
-            suffix_icon: Suffix icon name or IconName enum 后缀图标名称或枚举
-            status: Input status 输入框状态
-            parent: Parent widget 父组件
-        """
+            Args:
+                placeholder: 占位提示文本。
+                size: 输入框的尺寸规格。影响高度、内边距、字体大小及图标尺寸。
+                    支持 XSize 枚举或字符串（'small', 'default', 'large'）。
+                clearable: 是否显示一键清空按钮。
+                show_password: 是否启用密码可见性切换按钮。开启后会自动设置 EchoMode。
+                prefix_icon: 前缀图标。显示在输入框最左侧，通常用于表示字段含义。
+                suffix_icon: 后缀图标。显示在内容右侧，清空按钮/密码切换按钮左侧。
+                status: 输入框状态。如 'error', 'warning', 'success'，影响边框和背景色。
+                parent: 父级组件。
+            """
         super().__init__(parent)
 
         self._prefix_icon = None

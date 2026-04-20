@@ -1,36 +1,20 @@
-"""
-Group Box Component 分组框组件
-支持明暗主题切换的分组框组件
-"""
 from ..utils.qt_compat import QGroupBox, Qt, QEvent
 from ..i18n import XI18N
 
 class XGroupBox(QGroupBox):
-    """Group Box Component 分组框组件
-    
-    一个用于组织相关组件的主题化分组框。
-    
-    Features 功能:
-        - Custom title 自定义标题
-        - Theme integration 主题适配
-        - Rounded corners 圆角边框
-        - Disabled state 禁用状态
-    """
+    """组框组件"""
     
     def __init__(
         self,
         title: str = "",
         parent=None
     ):
-        """
-        Initialize group box.
-        
-        初始化分组框。
-        
-        Args:
-            title: Group title 分组标题
-            parent: Parent widget 父组件
-        """
+        """初始化分组框组件。
+
+            Args:
+                title: 分组框顶部的标题文本。
+                parent: 父级组件。
+            """
         super().__init__(title, parent)
         self.setObjectName("xgroupbox")
         self._text_key =title

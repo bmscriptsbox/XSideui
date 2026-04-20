@@ -1,6 +1,5 @@
 """
-Carousel Component 轮播图组件
-支持图片轮播、自动播放、点击事件
+轮播图组件
 """
 
 from ..utils.qt_compat import (QWidget, QVBoxLayout, QHBoxLayout, QStackedWidget,
@@ -10,11 +9,18 @@ from .image import XImage
 
 
 class XCarousel(QWidget):
-    """Carousel Component 轮播图组件"""
+    """轮播图组件"""
     image_clicked = Signal(int)
     current_page_changed = Signal(int)
 
     def __init__(self, interval: int = 3000, min_height: int = 200, parent=None):
+        """初始化轮播图组件。
+
+            Args:
+                interval: 自动轮播的时间间隔（毫秒）。默认 3000ms (3秒)。
+                min_height: 组件的最小高度（像素）。用于确保轮播图在布局中有足够的视觉占位。
+                parent: 父组件。
+            """
         super().__init__(parent)
         self.interval = interval
         self.min_height = min_height

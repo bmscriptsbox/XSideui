@@ -4,12 +4,6 @@ from ..utils.qt_compat import Qt, QTextEdit
 class XTextEdit(QTextEdit):
     """
     文本编辑器组件
-
-    支持明暗主题切换、占位文本、最大长度限制。
-
-    Example:
-        >>> edit = XTextEdit(placeholder="请输入内容...", max_length=200)
-        >>> edit = XTextEdit(text="初始文本", read_only=True)
     """
 
     def __init__(

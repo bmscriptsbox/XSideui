@@ -1,9 +1,8 @@
 from enum import Enum
 from typing import Union
 
-
 from ..utils.qt_compat import (Qt, QTableWidget, QTableWidgetItem, QHeaderView, QAbstractItemView,
-                                         QWidget, QVBoxLayout, QEvent)
+                               QWidget, QVBoxLayout, QEvent)
 from .label import XLabel
 from ..i18n import XI18N, tr
 from .image import XImage
@@ -12,18 +11,7 @@ from ..xenum import XColor
 
 
 class XTableWidget(QTableWidget):
-    """
-    表格组件
-
-    提供丰富的样式定制和主题支持功能，支持预设样式、自定义列宽、对齐方式等。
-
-    Example:
-        >>> table = XTableWidget(
-        ...     headers=["姓名", "年龄", "职位"],
-        ...     column_widths=[100, 80, -1],
-        ...     style=XTableWidget.Style.STRIPED
-        ... )
-    """
+    """格组件"""
 
     class Style(Enum):
         """表格样式枚举"""
@@ -40,16 +28,16 @@ class XTableWidget(QTableWidget):
             parent=None
 
     ):
-        """初始化表格组件
+        """初始化表格组件。
 
-        Args:
-            headers: 表头列表
-            column_widths: 列宽列表，-1 表示自动拉伸
-            alignment: 对齐方式
-            style: 样式类型
-            row_height: 行高，默认为 40
-            parent: 父组件
-        """
+            Args:
+                headers: 表头标题列表。
+                column_widths: 各列的宽度。使用像素值，若设为 -1 则该列开启自动拉伸。
+                alignment: 单元格内容的对齐方式。
+                style: 表格风格。'default' 为纯色背景，'striped' 为交替行颜色。
+                row_height: 统一的行高设置。
+                parent: 父级组件。
+            """
         super().__init__(parent)
         self._i18n_header_keys = headers
         self.default_alignment = alignment
@@ -91,8 +79,6 @@ class XTableWidget(QTableWidget):
         self.verticalHeader().setDefaultSectionSize(row_height)
         self.set_style_type(style)
 
-
-
     def _init_empty_state(self):
         """初始化空状态"""
         self._empty_widget = QWidget(self)
@@ -105,10 +91,9 @@ class XTableWidget(QTableWidget):
 
         self._empty_label = XLabel(tr("Empty Data"))
         layout.addWidget(
-            XImage(source=XIcon.get(name=IconName.EMOTION_HAPPY, color=XColor.TERTIARY, size=32).pixmap(), min_height=32))
+            XImage(source=XIcon.get(name=IconName.EMOTION_HAPPY, color=XColor.TERTIARY, size=32).pixmap(),
+                   min_height=32))
         layout.addWidget(self._empty_label, 0, Qt.AlignCenter)
-
-
 
     def _update_empty_state(self):
         """更新空状态显示"""
@@ -189,8 +174,6 @@ class XTableWidget(QTableWidget):
         self.retranslateUi()
         return self
 
-
-
     def set_style_type(self, style: Union[Style, str]) -> 'XTableWidget':
         """设置表格样式类型
 
@@ -245,14 +228,3 @@ class XTableWidget(QTableWidget):
             return
         translated_labels = [XI18N.x_tr(key) for key in self._i18n_header_keys]
         super().setHorizontalHeaderLabels(translated_labels)
-
-
-
-
-
-
-
-
-
-
-

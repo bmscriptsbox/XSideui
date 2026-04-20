@@ -33,9 +33,9 @@ class XSwitchDemo(XWidget):
         layout.addWidget(color_card)
 
 
-        color_card.addWidget(XSwitch(checked=True,color=XColor.PRIMARY))
-        color_card.addWidget(XSwitch(checked=True,color=XColor.SUCCESS))
-        color_card.addWidget(XSwitch( checked=True,color=XColor.WARNING))
+        color_card.addWidget(XSwitch(checked=True,color=XColor.PRIMARY, text_position='left'))
+        color_card.addWidget(XSwitch(checked=True,color=XColor.SUCCESS, text_position='left'))
+        color_card.addWidget(XSwitch( checked=True,color=XColor.WARNING, text_position='left'))
         color_card.addWidget(XSwitch( checked=True,color=XColor.DANGER))
         color_card.addWidget(XSwitch( checked=True,color=XColor.SECONDARY))
         color_card.addWidget(XSwitch( checked=True,color=XColor.TERTIARY))

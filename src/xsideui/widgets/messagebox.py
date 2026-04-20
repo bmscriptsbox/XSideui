@@ -13,6 +13,15 @@ class XMessageBox(XDialog):
     """
 
     def __init__(self, title="提示", text="", icon: IconName = None, color: XColor = XColor.SECONDARY, parent=None):
+        """初始化消息提示框。
+
+            Args:
+                title: 弹窗标题。
+                text: 提示的正文内容。支持富文本格式。
+                icon: 提示图标。传入 IconName 枚举，若为 None 则不显示图标。
+                color: 主题颜色。主要影响图标颜色或顶部装饰条，默认为次要（Secondary）灰色。
+                parent: 父窗口。
+            """
         super().__init__(title=title, parent=parent)
         self._text = text
         self._on_confirm_callback = None

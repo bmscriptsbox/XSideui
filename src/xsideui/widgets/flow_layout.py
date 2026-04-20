@@ -5,13 +5,13 @@ class XFlowLayout(QLayout):
     """流式布局组件"""
 
     def __init__(self, parent=None, margin: int = 0, spacing: int = -1):
-        """初始化流式布局
+        """初始化流式布局。
 
-        Args:
-            parent: 父组件
-            margin: 布局边距
-            spacing: 项目间距（-1 表示使用系统默认）
-        """
+            Args:
+                parent: 父级组件或父布局。
+                margin: 布局的外边距（四周留白像素）。
+                spacing: 组件之间的间距（像素）。若为 -1，则尝试从父组件获取系统默认间距。
+            """
         super().__init__(parent)
         self._items = []
         self._spacing = spacing
@@ -75,14 +75,14 @@ class XFlowLayout(QLayout):
         if not self._items:
             margin = self.contentsMargins()
             return QSize(margin.left() + margin.right(), margin.top() + margin.bottom())
-        
+
         width = 0
         height = 0
         for item in self._items:
             size = self._get_item_size(item)
             width = max(width, size.width())
             height = max(height, size.height())
-        
+
         margin = self.contentsMargins()
         return QSize(width + margin.left() + margin.right(), height + margin.top() + margin.bottom())
 
@@ -116,12 +116,12 @@ class XFlowLayout(QLayout):
         """获取项目的实际大小，考虑 sizePolicy"""
         size = item.sizeHint()
         widget = item.widget()
-        
+
         if widget:
             policy = widget.sizePolicy()
             if policy.horizontalPolicy() == QSizePolicy.Policy.Expanding:
                 size = size.expandedTo(item.minimumSize())
-        
+
         return size
 
     def _do_layout(self, rect, test_only=False):
@@ -140,10 +140,10 @@ class XFlowLayout(QLayout):
 
         for item in self._items:
             item_size = self._get_item_size(item)
-            
+
             if row_width > 0:
                 row_width += spacing
-            
+
             if row_width + item_size.width() > available_width and row_width > 0:
                 x = rect.x() + margin.left()
                 y += row_height + spacing
