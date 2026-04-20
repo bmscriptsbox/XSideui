@@ -13,7 +13,7 @@ setup(
     description="A modern PySide2 / PySide6 component library with rich UI components and theme support",
     long_description=read_file("README.md"),
     long_description_content_type="text/markdown",
-    url="https://github.com/yourusername/xsideui",
+    url="https://github.com/bmscriptsbox/xsideui",
 
     # 包配置
     package_dir={"": "src"},
@@ -60,9 +60,9 @@ setup(
 
     # 项目相关 URLs
     project_urls={
-        "Documentation": "https://github.com/yourusername/xsideui/wiki",
-        "Source": "https://github.com/yourusername/xsideui",
-        "Tracker": "https://github.com/yourusername/xsideui/issues",
+        "Documentation": "https://github.com/bmscriptsbox/xsideui/wiki",
+        "Source": "https://github.com/bmscriptsbox/xsideui",
+        "Tracker": "https://github.com/bmscriptsbox/xsideui/issues",
     },
 
     # 关键词
