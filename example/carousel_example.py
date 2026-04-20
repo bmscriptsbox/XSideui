@@ -3,13 +3,12 @@ XCarousel Example 走马灯组件示例
 """
 import sys
 
-from xsideui import XLineEdit
 
 try:
     from PySide2.QtWidgets import QApplication, QVBoxLayout, QWidget
 except ImportError:
     from PySide6.QtWidgets import QApplication, QVBoxLayout, QWidget
-from src.xsideui import XWidget, XLabel, XCarousel
+from src.xsideui import XWidget, XLabel, XCarousel, XLineEdit
 
 
 

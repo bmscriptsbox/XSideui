@@ -61,7 +61,7 @@ class XCarousel(QWidget):
             source=source,
             fit=fit_mode,
             lazy=False,
-            min_height=self.min_height,
+            min_size=self.min_height,
             parent=self
         )
         image_widget.clicked.connect(lambda: self.image_clicked.emit(self.stack_widget.indexOf(image_widget)))
