@@ -43,13 +43,20 @@ class XBadgeManager(QObject):
 
     def cleanup(self):
         """彻底释放监听"""
-        if self.target:
-            self.target.removeEventFilter(self)
+        try:
+            # 使用 bool(self.target) 检查底层对象是否存活
+            if self.target and not self.target.__dict__.get('_is_destroyed', False):
+                self.target.removeEventFilter(self)
+        except (RuntimeError, AttributeError):
+            # 如果已经删除了，直接跳过即可
+            pass
+
         for p in self._parents:
             try:
                 p.removeEventFilter(self)
-            except:
+            except (RuntimeError, AttributeError):
                 pass
+
         self._parents.clear()
         self._update_timer.stop()
 
@@ -66,8 +73,14 @@ class XBadgeManager(QObject):
 
         # 目标销毁处理
         if obj is self.target and event.type() == QEvent.Destroy:
-            if self.badge and not self.badge.isHidden():
-                self.badge.deleteLater()
+            # 这里加上保护，防止 badge 已经进入销毁流程
+            if self.badge:
+                try:
+                    # 停止所有定时器，防止在销毁期间触发 update_position
+                    self._update_timer.stop()
+                    self.badge.deleteLater()
+                except:
+                    pass
             self.deleteLater()
 
         return super().eventFilter(obj, event)
@@ -171,6 +184,8 @@ class XBadgeBase(QLabel):
         self.manager = XBadgeManager(target, self, offset)
         self.show()
 
+        target.destroyed.connect(self.detach)
+
         self._color_cache = {}
         theme_manager.theme_changed.connect(self._on_theme_changed)
 
@@ -207,14 +222,25 @@ class XBadgeBase(QLabel):
         except:
             pass
 
-        if hasattr(self, 'manager'):
-            self.manager.cleanup()
+        # 1. 安全调用 cleanup
+        if hasattr(self, 'manager') and self.manager:
+            try:
+                self.manager.cleanup()
+            except RuntimeError:
+                pass
 
-        tid = id(self.target)
-        if tid in XBadgeBase._registry and self.tag in XBadgeBase._registry[tid]:
-            XBadgeBase._registry[tid].pop(self.tag)
-            if not XBadgeBase._registry[tid]:
-                XBadgeBase._registry.pop(tid)
+        # 2. 从注册表中清理
+        try:
+            # 再次检查 target 是否有效
+            if self.target:
+                tid = id(self.target)
+                if tid in XBadgeBase._registry and self.tag in XBadgeBase._registry[tid]:
+                    XBadgeBase._registry[tid].pop(self.tag)
+                    if not XBadgeBase._registry[tid]:
+                        XBadgeBase._registry.pop(tid)
+        except RuntimeError:
+            # 因为 registry 会在下次清理或关闭时被处理。
+            pass
 
         self.hide()
         self.deleteLater()
