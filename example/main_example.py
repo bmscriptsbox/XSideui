@@ -14,7 +14,7 @@ from src.xsideui import XWidget, XLabel, XPushButton, XColor, XButtonVariant, Ic
     XPushButtonDropdown, XSwitch, XRadioButton, XCheckBox, XHeaderCard, XLineEdit, XIcon, XDateEdit, XDateTimeEdit, \
     XTimeEdit, XComboBox, XTextEdit, XCodeBlock, XCarousel, XTableWidget, XLoadingMask, XPagination, XSpinBox, \
     XDoubleSpinBox, XSlider, XProgressBar, XCircleProgress, XNotif, XMessageBox, XSize, XMenu, XPopover, \
-    XTextBadge, XIconBadge, XTabWidget, XUpload, XListWidget, XNavSimple, XI18N
+    XTextBadge, XIconBadge, XTabWidget, XUpload, XListWidget, XNavSimple, XI18N, XScrollArea
 from xsideui.utils.qt_compat import exec_app
 
 
@@ -33,18 +33,25 @@ class XSideUiDemo(XWidget):
     def _init_ui(self):
         self.set_title('XSideUi样式示例')
         self.set_logo(r'..\resources\logo.png')
-        self.resize(800,600)
+        self.resize(1000,800)
         # 标题栏增加语言切换按钮
         btn_translation = XPushButton(icon=IconName.TRANSLATE, variant=XButtonVariant.TEXT, size=XSize.SMALL, color=XColor.SECONDARY)
         btn_translation.clicked.connect(self._on_translation)
         self.add_title_bar_widget(btn_translation)
         # 总布局
+        # 滑动区域
+        self.scroll_area = XScrollArea()
+        self.scroll_area.setWidgetResizable(True)
+        self.scroll_area.set_scrollbar_visible(False, True)  # 隐藏横向，显示纵向
+
         content_widget = QFrame()
-        self.addWidget(content_widget)
         self.content_layout = QHBoxLayout()
         self.content_layout.setContentsMargins(0,0,0,0)
         self.content_layout.setSpacing(11)
         content_widget.setLayout(self.content_layout)
+        self.scroll_area.setWidget(content_widget)
+        self.addWidget(self.scroll_area)
+
         self._init_navbar()
 
         # 左右布局
