@@ -1,0 +1,134 @@
+/* XListView QSS Styles */
+
+QListView#XListView {
+    background-color: {bg_1};
+    border: none;
+    border-radius: {radius_m};
+    font-family: {font_family};
+    font-size: {font_size_m};
+    outline: none;
+    padding: 0px;
+}
+
+/* 边框样式 */
+QListView#XListView[hasBorder="true"] {
+    border: 1px solid {border};
+}
+
+/* 无边框样式 */
+QListView#XListView[hasBorder="false"] {
+    border: none;
+}
+
+/* 交替行颜色 */
+QListView#XListView[alternatingColors="true"] {
+    background-color: {bg_1};
+}
+
+QListView#XListView[alternatingColors="true"]::item:alternate {
+    background-color: {bg_2};
+}
+
+/* 列表项样式 */
+QListView#XListView::item {
+    color: {text_1};
+    text-align: left;
+    padding: {spacing_m} {spacing_xs};
+    min-height: 32px;
+    border: none;
+    border-bottom: 1px solid transparent;
+}
+
+/* 最后一项不显示底部分隔线 */
+QListView#XListView::item:last {
+    border-bottom: none;
+}
+
+/* 悬停效果 */
+QListView#XListView::item:hover {
+    background-color: {fill_alpha_1};
+}
+
+/* 选中状态 */
+QListView#XListView::item:selected {
+    background-color: {primary_alpha_1};
+    color: {primary};
+}
+
+/* 选中并悬停 */
+QListView#XListView::item:selected:hover {
+    background-color: {primary_alpha_3};
+}
+
+/* 拖拽指示器 */
+QListView#XListView::dropIndicator {
+    border: 2px solid {primary};
+    background-color: {primary_alpha_1};
+}
+
+/* 滚动条样式 - 垂直 */
+QScrollBar:vertical {
+    background: transparent;
+    width: 6px;
+    margin: 0px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background-color: {primary_alpha_2};
+    border-radius: 3px;
+    min-height: 30px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background-color: {primary_alpha_3};
+}
+
+QScrollBar::handle:vertical:pressed {
+    background-color: {primary};
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical,
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+    border: none;
+    height: 0px;
+}
+
+/* 滚动条样式 - 水平 */
+QScrollBar:horizontal {
+    background: transparent;
+    height: 6px;
+    margin: 0px;
+    border: none;
+}
+
+QScrollBar::handle:horizontal {
+    background-color: {primary_alpha_2};
+    border-radius: 3px;
+    min-width: 30px;
+}
+
+QScrollBar::handle:horizontal:hover {
+    background-color: {primary_alpha_3};
+}
+
+QScrollBar::handle:horizontal:pressed {
+    background-color: {primary};
+}
+
+QScrollBar::add-line:horizontal,
+QScrollBar::sub-line:horizontal,
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:horizontal {
+    background: none;
+    border: none;
+    width: 0px;
+}
+
+/* 选中矩形框 */
+QListView#XListView::item:selected:selected {
+    selection-background-color: {primary_alpha_3};
+}

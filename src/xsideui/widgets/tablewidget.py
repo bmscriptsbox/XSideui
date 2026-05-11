@@ -90,10 +90,12 @@ class XTableWidget(QTableWidget):
         layout.setAlignment(Qt.AlignCenter)
 
         self._empty_label = XLabel(tr("Empty Data"))
+        layout.addStretch()
         layout.addWidget(
             XImage(source=XIcon.get(name=IconName.EMOTION_HAPPY, color=XColor.TERTIARY, size=32).pixmap(),
                    min_size=32))
-        layout.addWidget(self._empty_label, 0, Qt.AlignCenter)
+        layout.addWidget(self._empty_label)
+        layout.addStretch()
 
     def _update_empty_state(self):
         """更新空状态显示"""

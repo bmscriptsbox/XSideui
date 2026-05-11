@@ -90,6 +90,19 @@ class FontHelper:
             # 兜底 PySide2，直接传 int
             font.setWeight(weight)
 
+
+def set_selection_rect_visible(widget, visible: bool):
+    """兼容 PySide2 和 PySide6 的选择矩形可见性设置
+
+    Args:
+        widget: QAbstractItemView 子类实例
+        visible: 是否显示选择矩形
+    """
+    if hasattr(widget, 'setSelectionRectVisible'):
+        # PySide6
+        widget.setSelectionRectVisible(visible)
+    # PySide2 不支持此方法，静默忽略
+
 # 获取所有导入的名称
 _locals = locals()
 __all__ = [name for name in _locals if not name.startswith('_')]

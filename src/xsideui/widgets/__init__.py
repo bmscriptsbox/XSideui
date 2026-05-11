@@ -4,6 +4,7 @@ from .widget import XWidget
 from .card import XCard, XHeaderCard, XGroupCard
 from .groupbox import XGroupBox
 from .listwidget import XListWidget
+from .listview import XListView
 from .image import XImage
 from .text_edit import XTextEdit
 from .codeblock import XCodeBlock
@@ -49,6 +50,7 @@ __all__ = [
     'XGroupCard',
     'XGroupBox',
     'XListWidget',
+    'XListView',
     'XImage',
     'XTextEdit',
     'XCodeBlock',
