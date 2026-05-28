@@ -9,10 +9,10 @@ class XDialog(QDialog):
     """
 
     def __init__(self,
+                 parent=None,
                  title: str = "XDialog",
                  logo: str = None,
                  show_close: bool = True,
-                 parent=None
                  ):
         super().__init__(parent=parent)
         """初始化无边框对话框容器。

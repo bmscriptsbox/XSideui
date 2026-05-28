@@ -145,18 +145,18 @@ class XCarousel(QWidget):
                 dot.style().polish(dot)
 
     def _next_page(self):
-        """切换图片-自动感知焦点"""
-        if self.get_page_count() <= 1:
-            return
+        try:
+            if self.get_page_count() <= 1:
+                return
 
-        # 获取当前正拥有焦点的控件
-        focus_widget = QApplication.focusWidget()
-        # 只要是开启了输入法支持的控件在处理焦点，就保持安静
-        if focus_widget and focus_widget.testAttribute(Qt.WA_InputMethodEnabled):
-            return
+            focus_widget = QApplication.focusWidget()
+            if focus_widget and focus_widget.testAttribute(Qt.WA_InputMethodEnabled):
+                return
 
-        next_idx = (self.stack_widget.currentIndex() + 1) % self.get_page_count()
-        self._switch_to_page(next_idx)
+            next_idx = (self.stack_widget.currentIndex() + 1) % self.get_page_count()
+            self._switch_to_page(next_idx)
+        except (KeyboardInterrupt, RuntimeError):
+            pass
 
     def set_current_page(self, index: int):
         """设置当前页"""
@@ -177,6 +177,7 @@ class XCarousel(QWidget):
         """设置自动播放定时器"""
         self.timer = QTimer(self)
         self.timer.timeout.connect(self._next_page)
+        self.destroyed.connect(self.timer.stop)
         if self.auto_play:
             self.timer.start(self.interval)
 

@@ -1,12 +1,53 @@
 from typing import Union
 
-from ..utils.qt_compat import QFrame, QHBoxLayout, QLabel, QSizePolicy, QIcon, Signal, QPoint, Qt, QEvent
+from ..utils.qt_compat import QFrame, QHBoxLayout, QLabel, QSizePolicy, QIcon, Signal, QPoint, Qt, QPushButton, QPainter, QColor, QRect, QSize
 
-from .pushbutton import XPushButton
 from ..icon import IconName, XIcon
 from ..theme import theme_manager
-from ..xenum import XButtonVariant, XSize, XColor
+from ..xenum import XColor
 from .label import XLabel
+
+
+class _TitleBarButton(QPushButton):
+    def __init__(self, icon_name, is_close=False, parent=None):
+        super().__init__(parent)
+        self._icon_name = icon_name
+        self._is_close = is_close
+        self.setFixedSize(36, 36)
+        self.setIconSize(QSize(16, 16))
+        self.setCursor(Qt.PointingHandCursor)
+        self.setMouseTracking(True)
+
+    def setButtonIcon(self, icon_name):
+        self._icon_name = icon_name
+        self.update()
+
+    def paintEvent(self, event):
+        p = QPainter(self)
+        p.setRenderHint(QPainter.Antialiasing, False)
+        rect = self.rect()
+
+        if self._is_close:
+            if self.isDown():
+                p.fillRect(rect, QColor("#f1707a"))
+            elif self.underMouse():
+                p.fillRect(rect, QColor("#e81123"))
+        else:
+            if self.isDown():
+                p.fillRect(rect, QColor(128, 128, 128, 40))
+            elif self.underMouse():
+                p.fillRect(rect, QColor(128, 128, 128, 25))
+
+        if self._is_close and (self.underMouse() or self.isDown()):
+            color = "#FFFFFF"
+        else:
+            color = theme_manager.colors.secondary
+
+        icon = XIcon.get(name=self._icon_name, size=16, color=color).icon()
+        icon_size = self.iconSize()
+        x = (rect.width() - icon_size.width()) // 2
+        y = (rect.height() - icon_size.height()) // 2
+        icon.paint(p, QRect(x, y, icon_size.width(), icon_size.height()))
 
 
 class XTitleBar(QFrame):
@@ -101,46 +142,33 @@ class XTitleBar(QFrame):
         self.middle_layout.addWidget(widget)
 
     def _setup_window_buttons(self):
-        """设置窗口控制按钮"""
         if self._show_dark:
-            self.theme_btn = XPushButton(icon=IconName.MOON if theme_manager.is_dark else IconName.SUN, variant=XButtonVariant.TEXT, size=XSize.SMALL, color=XColor.SECONDARY)
+            icon_name = IconName.MOON if theme_manager.is_dark else IconName.SUN
+            self.theme_btn = _TitleBarButton(icon_name, parent=self)
             self.theme_btn.clicked.connect(self._toggle_theme)
-            self.theme_btn.setFixedSize(36,36)
-            self.theme_btn.setContentsMargins(0, 0, 0, 0)
             self.right_layout.addWidget(self.theme_btn)
 
         if self._show_min:
-            self.min_button = XPushButton(icon=IconName.MINUS, variant=XButtonVariant.TEXT, size=XSize.SMALL, color=XColor.SECONDARY)
+            self.min_button = _TitleBarButton(IconName.MINUS, parent=self)
             self.min_button.clicked.connect(self.windowMinimumed.emit)
-            self.min_button.setFixedSize(36, 36)
-            self.min_button.setContentsMargins(0, 0, 0, 0)
             self.right_layout.addWidget(self.min_button)
 
         if self._show_max:
-            self.max_button = XPushButton(icon=IconName.FULL_SCREEN, variant=XButtonVariant.TEXT, size=XSize.SMALL, color=XColor.SECONDARY)
-            self.max_button.setMouseTracking(True)
-            self.max_button.setAttribute(Qt.WA_Hover, True)  # 确保支持悬停属性
+            self.max_button = _TitleBarButton(IconName.FULL_SCREEN, parent=self)
             self.max_button.clicked.connect(self._toggle_maximize)
-            self.max_button.setFixedSize(36, 36)
-            self.max_button.setContentsMargins(0, 0, 0, 0)
             self.right_layout.addWidget(self.max_button)
 
         if self._show_close:
-            self.close_button = XPushButton(icon=IconName.CLOSE, variant=XButtonVariant.TEXT, size=XSize.SMALL, color=XColor.SECONDARY)
+            self.close_button = _TitleBarButton(IconName.CLOSE, is_close=True, parent=self)
             self.close_button.clicked.connect(self.windowClosed.emit)
-            self.close_button.setFixedSize(36, 36)
-            self.close_button.setContentsMargins(0, 0, 0, 0)
-            self.close_button.installEventFilter(self)
             self.right_layout.addWidget(self.close_button)
 
-    def _toggle_theme(self, name):
-        """切换主题"""
-
+    def _toggle_theme(self):
         theme_manager.toggle_theme()
         if theme_manager.is_dark:
-            self.theme_btn.setIcon(XIcon(IconName.MOON).icon())
+            self.theme_btn.setButtonIcon(IconName.MOON)
         else:
-            self.theme_btn.setIcon(XIcon(IconName.SUN).icon())
+            self.theme_btn.setButtonIcon(IconName.SUN)
 
     def _toggle_maximize(self):
         """切换最大化状态"""
@@ -178,13 +206,4 @@ class XTitleBar(QFrame):
 
 
 
-    def eventFilter(self, obj, event):
-        """事件过滤器，用于处理关闭按钮的悬浮效果"""
-        if not self.window().isEnabled():  # 核心保护：窗口禁用时不处理
-            return super().eventFilter(obj, event)
-        if obj == self.close_button:
-            if event.type() == QEvent.Enter:
-                self.close_button.set_color(XColor.DANGER).set_variant(XButtonVariant.SOLID)
-            elif event.type() == QEvent.Leave:
-                self.close_button.set_color(XColor.SECONDARY).set_variant(XButtonVariant.TEXT)
-        return super().eventFilter(obj, event)
+

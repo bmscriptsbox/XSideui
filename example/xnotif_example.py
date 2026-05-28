@@ -103,7 +103,7 @@ class XNotifExample(XWidget):
 
     def _show_error(self,position=XNotif.Pos.BOTTOM_RIGHT):
         """显示错误通知"""
-        XNotif.error("错误通知",animated=True,position=position, parent=self)
+        XNotif.error("错误通知",animated=True,position=position, show_close=False, parent=self)
 
 
 

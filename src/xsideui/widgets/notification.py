@@ -126,7 +126,8 @@ class XNotif(QWidget):
 
         # 创建水平布局
         layout = QHBoxLayout(self.container)
-        layout.setContentsMargins(6, 6, 0, 6)
+        right_margin = 0 if self.show_close else 12
+        layout.setContentsMargins(6, 6, right_margin, 6)
         layout.setSpacing(8)
 
         self.icon_button = QPushButton()
@@ -173,8 +174,8 @@ class XNotif(QWidget):
             icon_name: 图标名称
             color: 图标颜色
         """
-        self.icon_button.setIcon(XIcon.get(name=icon_name, size=20, color=color).icon())
-        self.icon_button.setIconSize(QSize(20, 20))
+        self.icon_button.setIcon(XIcon.get(name=icon_name, size=18, color=color).icon())
+        self.icon_button.setIconSize(QSize(18, 18))
 
     def _fade_in(self):
         """执行淡入动画

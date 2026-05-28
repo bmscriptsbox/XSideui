@@ -15,6 +15,7 @@ __all__ = [
     'XInputStatus',
     'XLabel',
     'XDivider',
+    'XTextDivider',
     'XWidget',
     'XCard',
     'XHeaderCard',

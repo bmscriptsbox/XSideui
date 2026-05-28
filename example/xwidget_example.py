@@ -34,7 +34,7 @@ class ExampleWidget(XWidget):
 
         img = XImage(
             source=XIcon.get(name=IconName.XSIDEUI, color=XColor.PRIMARY, size=128).pixmap(),
-            min_height=128,
+            min_size=128,
             lazy=False
         )
         layout.addWidget(img, alignment=Qt.AlignCenter )

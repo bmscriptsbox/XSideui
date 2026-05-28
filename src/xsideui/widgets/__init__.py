@@ -1,5 +1,5 @@
 from .label import XLabel
-from .divider import XDivider
+from .divider import XDivider, XTextDivider
 from .widget import XWidget
 from .card import XCard, XHeaderCard, XGroupCard
 from .groupbox import XGroupBox
@@ -44,6 +44,7 @@ from .scrollarea import XScrollArea
 __all__ = [
     'XLabel',
     'XDivider',
+    'XTextDivider',
     'XWidget',
     'XCard',
     'XHeaderCard',
