@@ -8,6 +8,7 @@ QSS File Loader (Optimized)
 import os
 import re
 from typing import Dict
+import importlib.resources as _resources
 
 from .thmem_config import ThemeConfig
 
@@ -28,10 +29,10 @@ class QSSLoader:
             qss_dir: QSS 文件目录，如果为 None 则使用默认目录
         """
         if qss_dir is None:
-            current_dir = os.path.dirname(os.path.abspath(__file__))
-            qss_dir = os.path.join(current_dir, "qss")
-        
-        self._qss_dir = qss_dir
+            self._qss_dir = None  # 改为 None，使用时再决定从哪里读
+        else:
+            self._qss_dir = qss_dir
+
         self._cache = {}
         
         # 预编译变量匹配正则
@@ -47,16 +48,19 @@ class QSSLoader:
         Returns:
             QSS 样式字符串
         """
-        file_path = os.path.join(self._qss_dir, qss_file)
+
         
         # 检查缓存
         cache_key = self._make_cache_key(qss_file, variables)
         if cache_key in self._cache:
             return self._cache[cache_key]
         
-        # 读取文件
-        with open(file_path, 'r', encoding='utf-8') as f:
-            qss = f.read()
+        if self._qss_dir:
+            file_path = os.path.join(self._qss_dir, qss_file)
+            with open(file_path, 'r', encoding='utf-8') as f:
+                qss = f.read()
+        else:
+            qss = _resources.read_text('xsideui.theme.qss', qss_file)
         
         # 替换变量（使用正则表达式一次性替换）
         if variables:
@@ -193,15 +197,19 @@ class QSSLoader:
         
         # 加载所有 QSS 文件
         qss_parts = []
-        
-        # 加载基础样式
-        if os.path.exists(os.path.join(self._qss_dir, "base.qss")):
+
+        if self._qss_dir:
+            qss_files = [f for f in os.listdir(self._qss_dir) if f.endswith('.qss')]
+        else:
+            qss_files = [f for f in _resources.contents('xsideui.theme.qss') if f.endswith('.qss')]
+
+        # 检查 base.qss
+        if 'base.qss' in qss_files:
             base_qss = self.load("base.qss", variables)
             qss_parts.append(base_qss)
-        
-        # 加载组件样式
-        for filename in os.listdir(self._qss_dir):
-            if filename.endswith(".qss") and filename not in ["base.qss", "theme.qss"]:
+
+        for filename in qss_files:
+            if filename not in ["base.qss", "theme.qss"]:
                 component_qss = self.load(filename, variables)
                 qss_parts.append(component_qss)
         

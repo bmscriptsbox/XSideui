@@ -48,6 +48,12 @@ class NavItem(QWidget):
         self._text_key = text  # 作为 ToolTip 显示
         self._is_selected = False
         self._is_hovered = False
+        self._translated_text = None
+        self._tooltip_pos = QPoint()
+
+        self._tooltip_timer = QTimer(self)
+        self._tooltip_timer.setSingleShot(True)
+        self._tooltip_timer.timeout.connect(self._show_tooltip)
 
         # 初始化界面
         self._init_ui()
@@ -66,8 +72,8 @@ class NavItem(QWidget):
         """当语言切换或文本更新时调用"""
         if not self._text_key:
             return
-        translated = XI18N.x_tr(self._text_key)
-        super().setToolTip(translated)
+        self._translated_text = XI18N.x_tr(self._text_key)
+        self.setToolTip(self._translated_text)
 
     def changeEvent(self, event):
         """监听翻译事件"""
@@ -138,22 +144,11 @@ class NavItem(QWidget):
         self._is_hovered = True
         self.update_icon()
 
-        # 显示工具提示（固定在右侧）
         if self._text_key:
-            # 获取翻译后的文本
-            translated_text = XI18N.x_tr(self._text_key)
-
-            # 1. 获取组件左上角相对于屏幕的绝对位置
             global_pos = self.mapToGlobal(QPoint(0, 0))
-
-            # 2. 计算气泡显示的固定坐标
-            # x: 组件宽度 + 6px 的间距 (显示在右侧)
-            # y: 组件高度的 1/8 (稍微偏上)
-            fixed_x = global_pos.x() + self.width() + 6
-            fixed_y = global_pos.y() + (self.height() / 8)
-
-            # 3. 在固定位置弹出
-            QToolTip.showText(QPoint(fixed_x, fixed_y), translated_text, self)
+            self._tooltip_pos = QPoint(global_pos.x() + self.width() + 6,
+                                        int(global_pos.y() + self.height() / 8))
+            self._tooltip_timer.start(200)
 
         super().enterEvent(event)
 
@@ -164,12 +159,16 @@ class NavItem(QWidget):
             event: 鼠标离开事件
         """
         self._is_hovered = False
-        self.update_icon()
+        if not self._is_selected:
+            self.update_icon()
 
-        # 鼠标离开时立即隐藏气泡，防止残留
+        self._tooltip_timer.stop()
         QToolTip.hideText()
 
         super().leaveEvent(event)
+
+    def _show_tooltip(self):
+        QToolTip.showText(self._tooltip_pos, self._translated_text, self)
 
     def mousePressEvent(self, event):
         """鼠标点击事件：发送点击信号

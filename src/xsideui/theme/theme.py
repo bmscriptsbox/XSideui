@@ -15,6 +15,7 @@ This module provides optimized theme management functionality:
 import json
 from pathlib import Path
 from typing import Dict, Optional
+import importlib.resources as _resources
 
 from ..utils.qt_compat import QFont, QObject, QSettings, QThread, Signal, QApplication, QWidget, QLabel, \
     QPropertyAnimation, QEasingCurve, QPainter, QPainterPath, QPolygon, \
@@ -37,12 +38,10 @@ class ThemeRegistry:
     def _load_builtin_themes(self):
         """加载内置主题"""
         try:
-            base_dir = Path(__file__).parent / "color_json"
-
-            # 加载 light 主题
-            light_config_path = base_dir / "light.json"
-            with open(light_config_path, 'r', encoding='utf-8') as f:
-                light_config = json.load(f)
+            light_config = json.loads(
+                _resources.read_text('xsideui.theme.color_json', 'light.json'))
+            dark_config = json.loads(
+                _resources.read_text('xsideui.theme.color_json', 'dark.json'))
 
             self.register_theme(
                 ThemeConfig(
@@ -62,11 +61,6 @@ class ThemeRegistry:
                     switch=light_config.get("switch", {})
                 )
             )
-
-            # 加载 dark 主题
-            dark_config_path = base_dir / "dark.json"
-            with open(dark_config_path, 'r', encoding='utf-8') as f:
-                dark_config = json.load(f)
 
             self.register_theme(
                 ThemeConfig(
