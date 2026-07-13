@@ -99,7 +99,7 @@ class XNotifExample(XWidget):
 
     def _show_warning(self,position=XNotif.Pos.TOP_RIGHT):
         """显示警告通知"""
-        XNotif.warning("警告信息",animated=True,position=position, parent=self)
+        XNotif.warning("警告信息",animated=True,position=position, parent=self, in_window=False)
 
     def _show_error(self,position=XNotif.Pos.BOTTOM_RIGHT):
         """显示错误通知"""

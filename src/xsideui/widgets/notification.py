@@ -98,7 +98,7 @@ class XNotif(QWidget):
         if in_window:
             self.setWindowFlags(Qt.FramelessWindowHint | Qt.SubWindow)
         else:
-            self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window)
+            self.setWindowFlags(Qt.FramelessWindowHint | Qt.Window | Qt.WindowStaysOnTopHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
         self.setAttribute(Qt.WA_DeleteOnClose)
         self.setAttribute(Qt.WA_StyledBackground, True)
